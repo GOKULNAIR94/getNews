@@ -45,7 +45,7 @@ restService.post('/inputmsg', function(req, res) {
     
             var ws =fs.createWriteStream('./my.csv');
             csv.write([
-                ["a1","b1"],
+                ["Name","Goku"],
                 ["a2","b2"],
                 ["a3","b3"]
               ], {headers : true})
