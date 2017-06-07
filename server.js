@@ -9,40 +9,59 @@ restService.use(bodyParser.urlencoded({
     extended: true
 }));
 restService.use(bodyParser.json());
-var myContext = 'getPromo';
-var actionType = "";
-var titleName = '';
-var tNumber = '';
-var territoryStored = '';
-var objectName = '';
-var attributeName = '';
-var msRecord = '';
-var newValue = "";
-var msId = "";
-var outputAttribute ="";
+// var myContext = 'getPromo';
+// var actionType = "";
+// var titleName = '';
+// var tNumber = '';
+// var territoryStored = '';
+// var objectName = '';
+// var attributeName = '';
+// var msRecord = '';
+// var newValue = "";
+// var msId = "";
+// var outputAttribute ="";
 
-var uname = 'gokuln';
-var pword = 'Goklnt@1';
-var speech = '';
-var options = '';
-var urlPath = '';
-var request;
-var responseString;
-var resCode = '';
-var resObj = '';
-var pId, pName, msId, msName;
+// var uname = 'gokuln';
+// var pword = 'Goklnt@1';
+// var speech = '';
+// var options = '';
+// var urlPath = '';
+// var request;
+// var responseString;
+// var resCode = '';
+// var resObj = '';
+// var pId, pName, msId, msName;
 
 
 restService.post('/inputmsg', function(req, res) {
-    var csv = require('fast-csv');
 
-    var ws =fs.createWriteStream('my.csv');
-    csv.write([
-        ["a1","b1"],
-        ["a2","b2"],
-        ["a3","b3"]
-      ], {headers : true})
-    .pipe(ws);
+    var intentName = titleName = req.body.result.metadata.intentName;
+        if(intentName == 'WriteCSV' )
+        {
+            var csv = require('fast-csv');
+    
+            var ws =fs.createWriteStream('my.csv');
+            csv.write([
+                ["a1","b1"],
+                ["a2","b2"],
+                ["a3","b3"]
+              ], {headers : true})
+            .pipe(ws);
+        }
+
+        if(intentName == 'ReadCSV' )
+        {
+            var csv = require('fast-csv');
+    
+            fs.createReadStream('my.csv')
+                .pipe(csv())
+                .on('data', function(data){
+                    console.log(data);
+                } )
+                .on('end', function(data){
+                    console.log("Read Finished");
+                });
+        }
   //   titleName = req.body.result.parameters.titleName;
   //   territoryStored = req.body.result.parameters.territoryStored;
   //   objectName = req.body.result.parameters.object;
