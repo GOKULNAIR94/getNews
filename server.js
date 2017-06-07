@@ -35,7 +35,7 @@ restService.use(bodyParser.json());
 
 restService.post('/inputmsg', function(req, res) {
 
-    var intentName = titleName = req.body.result.metadata.intentName;
+    var intentName = req.body.result.metadata.intentName;
         if(intentName == 'WriteCSV' )
         {
             var csv = require('fast-csv');
