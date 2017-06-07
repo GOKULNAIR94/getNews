@@ -36,39 +36,42 @@ restService.use(bodyParser.json());
 restService.post('/inputmsg', function(req, res) {
 
     var intentName = req.body.result.metadata.intentName;
-        try
+    console.log( "intentName : " + intentName );
+    try
+    {
+        if(intentName == 'WriteCSV' )
         {
-            if(intentName == 'WriteCSV' )
-            {
-                var csv = require('fast-csv');
-        
-                var ws =fs.createWriteStream('my.csv');
-                csv.write([
-                    ["a1","b1"],
-                    ["a2","b2"],
-                    ["a3","b3"]
-                  ], {headers : true})
-                .pipe(ws);
-            }
+            var csv = require('fast-csv');
     
-            if(intentName == 'ReadCSV' )
-            {
-                var csv = require('fast-csv');
-        
-                fs.createReadStream('my.csv')
-                    .pipe(csv())
-                    .on('data', function(data){
-                        console.log(data);
-                    } )
-                    .on('end', function(data){
-                        console.log("Read Finished");
-                    });
-            }
+            var ws =fs.createWriteStream('my.csv');
+            csv.write([
+                ["a1","b1"],
+                ["a2","b2"],
+                ["a3","b3"]
+              ], {headers : true})
+            .pipe(ws);
+            console.log( "Write Finished... " );
         }
-        catch(e)
+
+        if(intentName == 'ReadCSV' )
         {
-            console.log("Error : " + e );
+            var csv = require('fast-csv');
+    
+            fs.createReadStream('my.csv')
+                .pipe(csv())
+                .on('data', function(data){
+                    console.log(data);
+                } )
+                .on('end', function(data){
+                    console.log("Read Finished");
+                });
         }
+    }
+    catch(e)
+    {
+        console.log("Error : " + e );
+    }
+
   //   titleName = req.body.result.parameters.titleName;
   //   territoryStored = req.body.result.parameters.territoryStored;
   //   objectName = req.body.result.parameters.object;
