@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/GOKULNAIR94/gbot#readme",
   "dependencies": {
-    "express": "^4.15.3",
     "body-parser": "^1.15.2",
+    "express": "^4.15.3",
+    "fast-csv": "^2.4.0",
     "request": "^2.76.0"
   },
   "devDependencies": {},
