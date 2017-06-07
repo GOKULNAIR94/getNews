@@ -36,31 +36,38 @@ restService.use(bodyParser.json());
 restService.post('/inputmsg', function(req, res) {
 
     var intentName = req.body.result.metadata.intentName;
-        if(intentName == 'WriteCSV' )
+        try
         {
-            var csv = require('fast-csv');
+            if(intentName == 'WriteCSV' )
+            {
+                var csv = require('fast-csv');
+        
+                var ws =fs.createWriteStream('my.csv');
+                csv.write([
+                    ["a1","b1"],
+                    ["a2","b2"],
+                    ["a3","b3"]
+                  ], {headers : true})
+                .pipe(ws);
+            }
     
-            var ws =fs.createWriteStream('my.csv');
-            csv.write([
-                ["a1","b1"],
-                ["a2","b2"],
-                ["a3","b3"]
-              ], {headers : true})
-            .pipe(ws);
+            if(intentName == 'ReadCSV' )
+            {
+                var csv = require('fast-csv');
+        
+                fs.createReadStream('my.csv')
+                    .pipe(csv())
+                    .on('data', function(data){
+                        console.log(data);
+                    } )
+                    .on('end', function(data){
+                        console.log("Read Finished");
+                    });
+            }
         }
-
-        if(intentName == 'ReadCSV' )
+        catch(e)
         {
-            var csv = require('fast-csv');
-    
-            fs.createReadStream('my.csv')
-                .pipe(csv())
-                .on('data', function(data){
-                    console.log(data);
-                } )
-                .on('end', function(data){
-                    console.log("Read Finished");
-                });
+            console.log("Error : " + e );
         }
   //   titleName = req.body.result.parameters.titleName;
   //   territoryStored = req.body.result.parameters.territoryStored;
