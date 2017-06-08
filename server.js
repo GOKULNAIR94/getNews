@@ -49,9 +49,9 @@ restService.post('/inputmsg', function(req, res) {
         content = JSON.parse(content);
         console.log( "Name : " + content.items[0].Name );
         console.log( "Grade : " + content.items[0].cadre );
-        var query = "Name=Chikku";
+        var query = "cadre=A11";
         var output =
-          jsonQuery('items['+ query +'].Skils.JS', {
+          jsonQuery('items[* '+ query +'].Skils.JS', {
             data: content
           }).value;
           console.log( "Output : " + output);
