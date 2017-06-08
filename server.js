@@ -37,11 +37,14 @@ restService.post('/inputmsg', function(req, res) {
 
     var intentName = req.body.result.metadata.intentName;
     console.log( "intentName : " + intentName );
+    
     try
     {
       if(intentName == 'ReadCSV' ){
         var content = fs.readFileSync('package.json', 'utf8');
         console.log( "Content : " + content);
+        content = JSON.parse(content);
+        console.log( "Name : " + content.name );
       }
         // var path = require("path");
 
