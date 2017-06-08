@@ -49,6 +49,9 @@ restService.post('/inputmsg', function(req, res) {
       }
 
       if(intentName == 'WriteCSV' ){
+        content = fs.readFileSync('data.json', 'utf8');
+        console.log( "Content : " + content);
+        content = JSON.parse(content);
         content["Location"] = "Mahape";
         content["cadre"] = "A12";
         content = JSON.stringify( contont, null, 2);
