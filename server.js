@@ -39,6 +39,8 @@ restService.post('/inputmsg', function(req, res) {
     console.log( "intentName : " + intentName );
     try
     {
+        var path = require("path");
+
         console.log( "Dir Name : " + __dirname);
         console.log(path.dirname(__filename));
 
