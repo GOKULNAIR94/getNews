@@ -39,6 +39,9 @@ restService.post('/inputmsg', function(req, res) {
     console.log( "intentName : " + intentName );
     try
     {
+        console.log( "Dir Name : " + __dirname);
+        console.log(path.dirname(__filename));
+
         if(intentName == 'WriteCSV' )
         {
             var csv = require('fast-csv');
