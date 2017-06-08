@@ -46,6 +46,7 @@ restService.post('/inputmsg', function(req, res) {
         content = JSON.parse(content);
         console.log( "Name : " + content.items[0].Name );
         console.log( "Grade : " + content.items[0].cadre );
+        console.log("Query : " + $.items[?(@.cadre=="A11" && @.Name=="Goku")].Skils.JS)
       }
 
       if(intentName == 'WriteCSV' ){
