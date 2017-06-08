@@ -56,6 +56,15 @@ restService.post('/inputmsg', function(req, res) {
           }).value;
           if( output.length == 1 )
             console.log( "Output : " + output);
+
+          if( output.length > 1 )
+          {
+            var sum = 0;
+            for(var i =0; i < output.length; i++)
+            {
+              sum = sum + output[i];
+            }
+          }
       }
 
       if(intentName == 'WriteCSV' ){
