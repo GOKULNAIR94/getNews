@@ -52,7 +52,7 @@ restService.post('/inputmsg', function(req, res) {
         var output =
           jsonQuery('items[Name=Goku].Skils.JS', {
             data: content
-          });
+          }).value;
           console.log( "Output : " + output);
       }
 
