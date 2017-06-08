@@ -54,7 +54,7 @@ restService.post('/inputmsg', function(req, res) {
         content = JSON.parse(content);
         content["Location"] = "Mahape";
         content["cadre"] = "A12";
-        content = JSON.stringify( contont, null, 2);
+        content = JSON.stringify( content, null, 2);
         fs.writeFile('data.json', data, function(){
           console.log("All set...");
         });
