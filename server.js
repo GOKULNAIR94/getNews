@@ -62,7 +62,7 @@ restService.post('/inputmsg', function(req, res) {
         {
             var csv = require('fast-csv');
     
-            fs.createReadStream( './package.json')
+            fs.createReadStream( './my.csv')
                 .pipe(csv())
                 .on('data', function(data){
                     console.log(data);
