@@ -45,12 +45,12 @@ restService.post('/inputmsg', function(req, res) {
         console.log( "Content : " + content);
         content = JSON.parse(content);
         console.log( "Name : " + content.Name );
-        console.log( "Grade : " + content.Cadre );
+        console.log( "Grade : " + content.cadre );
       }
-      
+
       if(intentName == 'WriteCSV' ){
         content["Location"] = "Mahape";
-        content["Cadre"] = "A12";
+        content["cadre"] = "A12";
         content = JSON.stringify( contont, null, 2);
         fs.writeFile('data.json', data, function(){
           console.log("All set...");
