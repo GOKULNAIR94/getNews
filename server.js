@@ -62,7 +62,7 @@ restService.post('/inputmsg', function(req, res) {
             var sum = 0;
             for(var i =0; i < output.length; i++)
             {
-              sum = sum + output[i];
+              sum = sum + parseInt(output[i]);
             }
             console.log( "Sum : " + sum);
           }
