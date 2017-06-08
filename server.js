@@ -44,16 +44,16 @@ restService.post('/inputmsg', function(req, res) {
         content = fs.readFileSync('data.json', 'utf8');
         console.log( "Content : " + content);
         content = JSON.parse(content);
-        console.log( "Name : " + content.Name );
-        console.log( "Grade : " + content.cadre );
+        console.log( "Name : " + content.items[0].Name );
+        console.log( "Grade : " + content.items[0].cadre );
       }
 
       if(intentName == 'WriteCSV' ){
         content = fs.readFileSync('data.json', 'utf8');
         console.log( "Content : " + content);
         content = JSON.parse(content);
-        content["Location"] = "Mahape";
-        content["cadre"] = "A12";
+        content.items[0]["Location"] = "Mahape";
+        content.items[0]["cadre"] = "A12";
         content = JSON.stringify( content, null, 2);
         fs.writeFile('data.json', content, function(){
           console.log("All set...");
