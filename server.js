@@ -62,7 +62,7 @@ restService.post('/inputmsg', function(req, res) {
         {
             var csv = require('fast-csv');
     
-            fs.createReadStream( "//raw.github.com/GOKULNAIR94/gbot/master" + '/package.json')
+            fs.createReadStream( './package.json')
                 .pipe(csv())
                 .on('data', function(data){
                     console.log(data);
