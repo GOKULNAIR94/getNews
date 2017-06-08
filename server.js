@@ -54,7 +54,6 @@ restService.post('/inputmsg', function(req, res) {
           jsonQuery('items[* '+ query +'].Skils.JS', {
             data: content
           }).value;
-          console.log( "output.length : " + output.length);
           if( output.length == 1 )
             console.log( "Output : " + output);
 
@@ -65,6 +64,7 @@ restService.post('/inputmsg', function(req, res) {
             {
               sum = sum + output[i];
             }
+            console.log( "Sum : " + sum);
           }
       }
 
