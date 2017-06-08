@@ -51,9 +51,9 @@ restService.post('/inputmsg', function(req, res) {
         console.log( "Grade : " + content.items[0].cadre );
         var output =
           jsonQuery('items[Name=Goku].Skils.JS', {
-            data: data
-          })
-          console.log( "Output : " + output)
+            data: content
+          });
+          console.log( "Output : " + output);
       }
 
       if(intentName == 'WriteCSV' ){
