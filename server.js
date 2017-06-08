@@ -56,7 +56,7 @@ restService.post('/inputmsg', function(req, res) {
           }).value;
           //if(  )
            
-          console.log( "Output : " + output[0]);
+          console.log( "Output : " + output[1]);
           console.log( "typeof output : " + typeof output);
       }
 
