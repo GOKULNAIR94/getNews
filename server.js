@@ -54,7 +54,7 @@ restService.post('/inputmsg', function(req, res) {
           jsonQuery('items[* '+ query +'].Skils.JS', {
             data: content
           }).value;
-          if( output.size() == 1 )
+          if( output.length == 1 )
             console.log( "Output : " + output);
       }
 
