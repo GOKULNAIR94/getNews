@@ -48,7 +48,7 @@ restService.post('/inputmsg', function(req, res) {
         {
             var csv = require('fast-csv');
     
-            var ws =fs.createWriteStream('./my.csv');
+            var ws =fs.createWriteStream(__dirname +'/my.csv');
             csv.write([
                 ["Name","Goku"],
                 ["a2","b2"],
