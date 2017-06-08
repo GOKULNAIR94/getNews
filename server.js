@@ -41,7 +41,7 @@ restService.post('/inputmsg', function(req, res) {
     {
       if(intentName == 'ReadCSV' ){
         var content = fs.readFileSync('package.json', 'utf8');
-        console.log( "Content : " + content);
+        console.log( "Content : " + content.name);
       }
         // var path = require("path");
 
