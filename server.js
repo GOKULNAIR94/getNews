@@ -9,6 +9,9 @@ restService.use(bodyParser.urlencoded({
     extended: true
 }));
 restService.use(bodyParser.json());
+
+var jsonQuery = require('json-query');
+
 // var myContext = 'getPromo';
 // var actionType = "";
 // var titleName = '';
@@ -46,7 +49,11 @@ restService.post('/inputmsg', function(req, res) {
         content = JSON.parse(content);
         console.log( "Name : " + content.items[0].Name );
         console.log( "Grade : " + content.items[0].cadre );
-        console.log("Query : " + $.items[?(@.cadre=="A11" && @.Name=="Goku")].Skils.JS)
+        var output =
+          jsonQuery('items[Name=Goku].Skils.JS', {
+            data: data
+          })
+          console.log( "Output : " + output)
       }
 
       if(intentName == 'WriteCSV' ){
