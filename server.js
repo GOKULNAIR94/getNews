@@ -54,7 +54,10 @@ restService.post('/inputmsg', function(req, res) {
           jsonQuery('items[* '+ query +'].Skils.JS', {
             data: content
           }).value;
+          //if(  )
+           
           console.log( "Output : " + output);
+          console.log( "typeof output : " + typeof output);
       }
 
       if(intentName == 'WriteCSV' ){
