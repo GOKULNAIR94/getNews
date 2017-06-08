@@ -49,7 +49,7 @@ restService.post('/inputmsg', function(req, res) {
         content = JSON.parse(content);
         console.log( "Name : " + content.items[0].Name );
         console.log( "Grade : " + content.items[0].cadre );
-        var query = "cadre=A11 & Name = Goku";
+        var query = "cadre=A11";
         var output =
           jsonQuery('items[* '+ query +'].Skils.JS', {
             data: content
