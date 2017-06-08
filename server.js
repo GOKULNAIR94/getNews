@@ -37,14 +37,24 @@ restService.post('/inputmsg', function(req, res) {
 
     var intentName = req.body.result.metadata.intentName;
     console.log( "intentName : " + intentName );
-    
+    var content;
     try
     {
       if(intentName == 'ReadCSV' ){
-        var content = fs.readFileSync('package.json', 'utf8');
+        content = fs.readFileSync('data.json', 'utf8');
         console.log( "Content : " + content);
         content = JSON.parse(content);
-        console.log( "Name : " + content.name );
+        console.log( "Name : " + content.Name );
+        console.log( "Grade : " + content.Cadre );
+      }
+      
+      if(intentName == 'WriteCSV' ){
+        content["Location"] = "Mahape";
+        content["Cadre"] = "A12";
+        content = JSON.stringify( contont, null, 2);
+        fs.writeFile('data.json', data, function(){
+          console.log("All set...");
+        });
       }
         // var path = require("path");
 
