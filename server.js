@@ -39,38 +39,42 @@ restService.post('/inputmsg', function(req, res) {
     console.log( "intentName : " + intentName );
     try
     {
-        var path = require("path");
+      if(intentName == 'ReadCSV' ){
+        var content = fs.readFileSync('package.json', 'utf8');
+        console.log( "Content : " + content);
+      }
+        // var path = require("path");
 
-        console.log( "Dir Name : " + __dirname);
-        console.log(path.dirname(__filename));
+        // console.log( "Dir Name : " + __dirname);
+        // console.log(path.dirname(__filename));
 
-        if(intentName == 'WriteCSV' )
-        {
-            var csv = require('fast-csv');
+        // if(intentName == 'WriteCSV' )
+        // {
+        //     var csv = require('fast-csv');
     
-            var ws =fs.createWriteStream(__dirname +'/my.csv');
-            csv.write([
-                ["Name","Goku"],
-                ["a2","b2"],
-                ["a3","b3"]
-              ], {headers : true})
-            .pipe(ws);
-            console.log( "Write Finished... " );
-        }
+        //     var ws =fs.createWriteStream(__dirname +'/my.csv');
+        //     csv.write([
+        //         ["Name","Goku"],
+        //         ["a2","b2"],
+        //         ["a3","b3"]
+        //       ], {headers : true})
+        //     .pipe(ws);
+        //     console.log( "Write Finished... " );
+        // }
 
-        if(intentName == 'ReadCSV' )
-        {
-            var csv = require('fast-csv');
+        // if(intentName == 'ReadCSV' )
+        // {
+        //     var csv = require('fast-csv');
     
-            fs.createReadStream( './my.csv')
-                .pipe(csv())
-                .on('data', function(data){
-                    console.log(data);
-                } )
-                .on('end', function(data){
-                    console.log("Read Finished");
-                });
-        }
+        //     fs.createReadStream( './my.csv')
+        //         .pipe(csv())
+        //         .on('data', function(data){
+        //             console.log(data);
+        //         } )
+        //         .on('end', function(data){
+        //             console.log("Read Finished");
+        //         });
+        // }
     }
     catch(e)
     {
