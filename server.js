@@ -61,8 +61,8 @@ restService.post('/inputmsg', function(req, res) {
 
           response.on('end', function() {
             console.log( "Body : " + body );
-            responseObject = JSON.parse(body);
-            res.json(responseObject);
+            //responseObject = JSON.parse(body);
+            //res.json(responseObject);
           })
         }).on('error', function(e){
           console.error(e);
