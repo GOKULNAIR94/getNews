@@ -41,6 +41,7 @@ restService.post('/inputmsg', function(req, res) {
     var intentName = req.body.result.metadata.intentName;
     console.log( "intentName : " + intentName );
     var content;
+    var speech = '';
     try
     {
       if( intentName == 'Budget' || intentName == 'Expense' ){
@@ -64,11 +65,19 @@ restService.post('/inputmsg', function(req, res) {
 
           response.on('end', function() {
             console.log( "Body : " + body );
-            //responseObject = JSON.parse(body);
-            //res.json(responseObject);
+            responseObject = JSON.parse(body);
+            speech = responseObject.speech;
+            return res.json({
+              speech: speech,
+              displayText: speech
+            })
           })
         }).on('error', function(e){
-          console.error(e);
+          speech = "Error occured!";
+            return res.json({
+              speech: speech,
+              displayText: speech
+            })
         });
         post_req.write(JSON.stringify(req.body));
         post_req.end();
