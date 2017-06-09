@@ -68,6 +68,7 @@ restService.post('/inputmsg', function(req, res) {
           console.error(e);
         });
 
+        console.log( "JSON.stringify(req.body) : " + JSON.stringify(req.body))
         post_req.write(JSON.stringify(req.body));
         post_req.end();
       }
