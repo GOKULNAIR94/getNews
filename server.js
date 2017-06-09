@@ -43,6 +43,17 @@ restService.post('/inputmsg', function(req, res) {
     var content;
     try
     {
+      if( intentName == 'Budget' || intentName == 'Expense' ){
+        var req = {
+          method: 'POST',
+          url: 'https://vikiviki.herokuapp.com/inputmsg',
+          data: req
+        }
+        $http(req).then(function (result) {
+          console.log(result);
+          response.send(result);
+        });
+      }
       if(intentName == 'ReadCSV' ){
         content = fs.readFileSync('data.json', 'utf8');
         console.log( "Content : " + content);
