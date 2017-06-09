@@ -47,7 +47,7 @@ restService.post('/inputmsg', function(req, res) {
         var newoptions = {
           host: 'vikiviki.herokuapp.com',
           path: '/inputmsg',
-          data: req,
+          data: req.body,
           method:'POST',
         };
 
@@ -68,7 +68,7 @@ restService.post('/inputmsg', function(req, res) {
           console.error(e);
         });
 
-        post_req.write(JSON.stringify(req));
+        post_req.write(JSON.stringify(req.body));
         post_req.end();
       }
 
