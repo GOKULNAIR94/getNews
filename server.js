@@ -54,21 +54,21 @@ restService.post('/inputmsg', function(req, res) {
         var body = "";
         var responseObject;
 
-        var post_req = http.request(newoptions, function(res) {
-          res.on('data', function (chunk) {
+        var post_req = http.request(newoptions, function(response) {
+          response.on('data', function (chunk) {
             body += chunk;
           });
 
-          res.on('end', function() {
+          response.on('end', function() {
             console.log( "Body : " + body );
             responseObject = JSON.parse(body);
-            response.json(responseObject);
+            res.json(responseObject);
           })
         }).on('error', function(e){
           console.error(e);
         });
 
-        post_req.write(JSON.stringify(request.body));
+        post_req.write(JSON.stringify(req));
         post_req.end();
       }
 
