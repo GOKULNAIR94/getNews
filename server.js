@@ -48,7 +48,7 @@ restService.post('/inputmsg', function(req, res) {
           host: 'vikiviki.herokuapp.com',
           path: '/inputmsg',
           data: req.body,
-          method:'POST',
+          method:'POST'
         };
 
         var body = "";
