@@ -44,16 +44,35 @@ restService.post('/inputmsg', function(req, res) {
     try
     {
       if( intentName == 'Budget' || intentName == 'Expense' ){
-        var req = {
-          method: 'POST',
-          url: 'https://vikiviki.herokuapp.com/inputmsg',
-          data: req
-        }
-        $http(req).then(function (result) {
-          console.log(result);
-          response.send(result);
+        var newoptions = {
+          host: 'vikiviki.herokuapp.com',
+          path: '/inputmsg',
+          data: req,
+          method:'POST',
+        };
+
+        var body = "";
+        var responseObject;
+
+        var post_req = http.request(newoptions, function(res) {
+          res.on('data', function (chunk) {
+            body += chunk;
+          });
+
+          res.on('end', function() {
+            console.log( "Body : " + body );
+            responseObject = JSON.parse(body);
+            response.json(responseObject);
+          })
+        }).on('error', function(e){
+          console.error(e);
         });
+
+        post_req.write(JSON.stringify(request.body));
+        post_req.end();
       }
+
+
       if(intentName == 'ReadCSV' ){
         content = fs.readFileSync('data.json', 'utf8');
         console.log( "Content : " + content);
