@@ -37,6 +37,7 @@ var jsonQuery = require('json-query');
 
 
 restService.post('/inputmsg', function(req, res) {
+	console.log( "Req : " + JSON.stringify(req));
 
     var intentName = req.body.result.metadata.intentName;
     console.log( "intentName : " + intentName );
