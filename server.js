@@ -11,7 +11,7 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 var jsonQuery = require('json-query');
-
+var os = require('os');
 restService.post('/inputmsg', function(req, res) {
 
     var intentName = req.body.result.metadata.intentName;
@@ -35,9 +35,9 @@ restService.post('/inputmsg', function(req, res) {
                 //console.log('Stringify ' + JSON.stringify(data));
                 console.log('Data Event received... ' + data.link);
                 //callback( data.title );
-                speech =  "\n" + speech + data.title + "! ";
+                speech =  speech + data.title + "! " + os.EOL;
                 if( data.link != null && data.link != NaN && req.body.result.metadata.intentName == "News - link" )
-                    speech =  speech + "\n More @ : "+ data.link + "! \n\n";
+                    speech =  speech + "\n More @ : "+ data.link + "!" + os.EOL;
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
