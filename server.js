@@ -33,14 +33,8 @@ restService.post('/inputmsg', function(req, res) {
 
             stream.on(GoogleNews.DATA, function(data) {
                 console.log('Stringify ' + JSON.stringify(data));
-                
                 //callback( data.title );
-                speech =  speech + data.title;
-                if( data.title )
-                   console.log('Data Event received... ' + data.title);
-                else
-                    console.log('End... ');
-                
+                speech =  speech + data.title;              
                 return res.json({
                   speech: speech,
                   displayText: speech
