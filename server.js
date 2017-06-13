@@ -20,14 +20,14 @@ restService.post('/inputmsg', function(req, res) {
     var content;
     var speech = '';
     try
-    {
+    {   
         var GoogleNews, googleNews, track;
 
         GoogleNews = require('google-news');
         googleNews = new GoogleNews();
 
         track = tracker;
-
+        var speech = "";
         googleNews.stream(track, function(stream) {
             var news = "";
 
@@ -35,16 +35,16 @@ restService.post('/inputmsg', function(req, res) {
                 //console.log('Stringify ' + JSON.stringify(data));
                 console.log('Data Event received... ' + data.title);
                 //callback( data.title );
-                var speech = data.title;
-                return res.json({
-                  speech: speech,
-                  displayText: speech
-                })
+                speech =  speech + data.title;
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
                 console.log('Error Event received... ' + error);
             });
+            return res.json({
+              speech: speech,
+              displayText: speech
+            })
         });
     }
     catch(e)
