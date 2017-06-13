@@ -33,10 +33,10 @@ restService.post('/inputmsg', function(req, res) {
 
             stream.on(GoogleNews.DATA, function(data) {
                 //console.log('Stringify ' + JSON.stringify(data));
-                console.log('Data Event received... ' + data.title);
+                console.log('Data Event received... ' + data.link);
                 //callback( data.title );
-                speech =  speech + data.title + "! ";
-                if( data.link != null )
+                speech =  "\n" + speech + data.title + "! ";
+                if( data.link != null && data.link != NaN )
                     speech =  speech + " More @ : "+ + data.link + "! \n";
             });
 
