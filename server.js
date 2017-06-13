@@ -11,6 +11,7 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 var jsonQuery = require('json-query');
+var jsonQuery = require('json-query');
 
 restService.post('/inputmsg', function(req, res) {
 
@@ -32,13 +33,14 @@ restService.post('/inputmsg', function(req, res) {
             var news = "";
 
             
-            function(){
+            function(callback){
                 stream.on(GoogleNews.DATA, function(data) {
                     //console.log('Stringify ' + JSON.stringify(data));
-                    //callback( data.title );
+                    
                     speech =  speech + data.title;              
                 });
-            }).then(function(){
+                callback( data.title );
+            }).then(function(result){
                 return res.json({
                   speech: speech,
                   displayText: speech
