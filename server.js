@@ -15,7 +15,7 @@ var jsonQuery = require('json-query');
 restService.post('/inputmsg', function(req, res) {
 
     var intentName = req.body.result.metadata.intentName;
-    var tracker = req.body.result.parameters.track;
+    var tracker = req.body.result.contexts[0].parameters.track;
     console.log( "intentName : " + intentName );
     var content;
     var speech = '';
