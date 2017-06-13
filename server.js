@@ -35,7 +35,7 @@ restService.post('/inputmsg', function(req, res) {
                 //console.log('Stringify ' + JSON.stringify(data));
                 console.log('Data Event received... ' + data.link);
                 //callback( data.title );
-                speech =  speech + data.title + "! " + os.EOL;
+                speech = os.EOL + "" +  speech + data.title + "! " + os.EOL;
                 if( data.link != null && data.link != NaN && req.body.result.metadata.intentName == "News - link" )
                     speech =  speech + "\n More @ : "+ data.link + "!" + os.EOL;
             });
