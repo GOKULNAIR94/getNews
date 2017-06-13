@@ -36,15 +36,16 @@ restService.post('/inputmsg', function(req, res) {
                 console.log('Data Event received... ' + data.title);
                 //callback( data.title );
                 speech =  speech + data.title;
+                return res.json({
+                  speech: speech,
+                  displayText: speech
+                })
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
                 console.log('Error Event received... ' + error);
             });
-            return res.json({
-              speech: speech,
-              displayText: speech
-            })
+
         });
     }
     catch(e)
