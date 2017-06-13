@@ -37,7 +37,7 @@ restService.post('/inputmsg', function(req, res) {
                 //callback( data.title );
                 speech =  "\n" + speech + data.title + "! ";
                 if( data.link != null && data.link != NaN )
-                    speech =  speech + " More @ : "+ + data.link + "! \n";
+                    speech =  speech + " More @ : "+ data.link + "! \n";
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
