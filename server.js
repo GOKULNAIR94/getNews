@@ -35,8 +35,9 @@ restService.post('/inputmsg', function(req, res) {
                 console.log('Stringify ' + JSON.stringify(data));
                 console.log('Data Event received... ' + data.title);
                 //callback( data.title );
-                speech =  "\n"+speech + data.title + "! ";
-                speech =  "\More @ : "+ + data.title + "! ";
+                speech =  speech + data.title + "! ";
+                if( data.link != null )
+                    speech =  speech + " More @ : "+ + data.link + "! \n";
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
