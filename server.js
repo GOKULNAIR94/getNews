@@ -28,23 +28,26 @@ restService.post('/inputmsg', function(req, res) {
 
         track = tracker;
         var speech = "";
-        googleNews.get(track, function(stream) {
+        googleNews.stream(track, function(stream) {
             var news = "";
 
             stream.on(GoogleNews.DATA, function(data) {
                 //console.log('Stringify ' + JSON.stringify(data));
-                console.log('Data Event received... ' + data.title);
-
+                
+                //callback( data.title );
                 speech =  speech + data.title;
-            });
-            stream.on(DATA, function(data) {
-                return res.json({
+                if( data.title )
+                   console.log('Data Event received... ' + data.title);
+                else
+                    console.log('End... ');
+                
+                //return res.json({
                   speech: speech,
                   displayText: speech
                 })
             });
 
-            stream.on(ERROR, function(error) {
+            stream.on(GoogleNews.ERROR, function(error) {
                 console.log('Error Event received... ' + error);
             });
 
