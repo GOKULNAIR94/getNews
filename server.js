@@ -11,7 +11,6 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 var jsonQuery = require('json-query');
-var jsonQuery = require('json-query');
 
 restService.post('/inputmsg', function(req, res) {
 
@@ -32,28 +31,24 @@ restService.post('/inputmsg', function(req, res) {
         googleNews.stream(track, function(stream) {
             var news = "";
 
-            
-            (function(callback){
-                stream.on(GoogleNews.DATA, function(data) {
-                    //console.log('Stringify ' + JSON.stringify(data));
-                    
-                    speech =  speech + data.title;              
-                });
-                callback();
-            }).then(function(){
-                return res.json({
-                  speech: speech,
-                  displayText: speech
-                })
+            stream.on(GoogleNews.DATA, function(data) {
+                //console.log('Stringify ' + JSON.stringify(data));
+                console.log('Data Event received... ' + data.title);
+                //callback( data.title );
+                speech =  "\n"+speech + data.title;
             });
-                        
-
-                
 
             stream.on(GoogleNews.ERROR, function(error) {
                 console.log('Error Event received... ' + error);
             });
-
+            
+            setTimeout(function() {
+                return res.json({
+                  speech: speech,
+                  displayText: speech
+                })
+            }, 1000);
+            
         });
     }
     catch(e)
