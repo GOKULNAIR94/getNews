@@ -32,7 +32,7 @@ restService.post('/inputmsg', function(req, res) {
             var news = "";
 
             stream.on(GoogleNews.DATA, function(data) {
-                //console.log('Stringify ' + JSON.stringify(data));
+                console.log('Stringify ' + JSON.stringify(data));
                 
                 //callback( data.title );
                 speech =  speech + data.title;
@@ -41,10 +41,10 @@ restService.post('/inputmsg', function(req, res) {
                 else
                     console.log('End... ');
                 
-//                return res.json({
-//                  speech: speech,
-//                  displayText: speech
-//                })
+                return res.json({
+                  speech: speech,
+                  displayText: speech
+                })
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
