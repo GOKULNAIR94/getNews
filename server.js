@@ -32,7 +32,7 @@ restService.post('/inputmsg', function(req, res) {
             var news = "";
 
             stream.on(GoogleNews.DATA, function(data) {
-                console.log('Stringify ' + JSON.stringify(data));
+                //console.log('Stringify ' + JSON.stringify(data));
                 console.log('Data Event received... ' + data.title);
                 //callback( data.title );
                 speech =  speech + data.title + "! ";
