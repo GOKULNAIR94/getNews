@@ -33,12 +33,13 @@ restService.post('/inputmsg', function(req, res) {
             var news = "";
 
             
-            (function(){
+            (function(callback){
                 stream.on(GoogleNews.DATA, function(data) {
                     //console.log('Stringify ' + JSON.stringify(data));
                     
                     speech =  speech + data.title;              
                 });
+                callback();
             }).then(function(){
                 return res.json({
                   speech: speech,
