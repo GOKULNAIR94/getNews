@@ -47,11 +47,11 @@ restService.post('/inputmsg', function(req, res) {
                     googl.getKey();
                     
                     googl.shorten(newsurl)
-                    .then(function ( shortUrl, callback ) {
+                    .then(function ( shortUrl ) {
                         console.log("shortUrl  : " + shortUrl);
                         speech = speech + "" + os.EOL + "" + data.title + "! ";
                         speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
-                        callback("end");
+                        return("end");
                     })
                     .catch(function (err) {
                         console.error(err.message);
@@ -61,7 +61,7 @@ restService.post('/inputmsg', function(req, res) {
                     speech = speech + "" + os.EOL + "" + data.title + "! ";
                 
                 
-                callback("Hi");
+                return("Hi");
                     
             });
 
