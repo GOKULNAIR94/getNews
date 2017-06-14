@@ -67,7 +67,7 @@ restService.post('/inputmsg', function(req, res) {
                   speech: speech,
                   displayText: speech
                 })
-            }, 1000);
+            }, 2000);
             
         });
     }
