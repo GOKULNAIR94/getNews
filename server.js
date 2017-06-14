@@ -47,11 +47,10 @@ restService.post('/inputmsg', function(req, res) {
                     googl.getKey();
                     
                     googl.shorten(newsurl)
-                    .then(function ( shortUrl, callback ) {
+                    .then(function ( shortUrl ) {
                         console.log("shortUrl  : " + shortUrl);
                         speech = speech + "" + os.EOL + "" + data.title + "! ";
                         speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
-                        return callback("end");
                     })
                     .catch(function (err) {
                         console.error(err.message);
@@ -66,13 +65,12 @@ restService.post('/inputmsg', function(req, res) {
                 console.log('Error Event received... ' + error);
             });
             
-            //setTimeout(function() {
-            console.log('Run ho gya ');
+            setTimeout(function() {
                 return res.json({
                   speech: speech,
                   displayText: speech
                 })
-            //}, 2000);
+            }, 2500);
             
         });
     }
