@@ -35,7 +35,6 @@ restService.post('/inputmsg', function(req, res) {
                 //console.log('Stringify ' + JSON.stringify(data));
                 //console.log('Data Event received... ' + data.link);
                 //callback( data.title );
-                speech = speech + "" + os.EOL + "" + data.title + "! ";
                 if( data.link != null && data.link != NaN && req.body.result.metadata.intentName == "News - link" ){
                     
                     var newsurl = data.link;
@@ -49,12 +48,15 @@ restService.post('/inputmsg', function(req, res) {
                     googl.shorten(newsurl)
                     .then(function (shortUrl) {
                         console.log("shortUrl  : " + shortUrl);
+                        speech = speech + "" + os.EOL + "" + data.title + "! ";
                         speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
                     })
                     .catch(function (err) {
                         console.error(err.message);
                     });
                 }
+                else
+                    speech = speech + "" + os.EOL + "" + data.title + "! ";
                     
             });
 
