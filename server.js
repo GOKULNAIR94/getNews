@@ -28,8 +28,9 @@ restService.post('/inputmsg', function(req, res) {
 
         track = tracker;
         var speech = "";
+        var news = "";
         googleNews.stream(track, function(stream) {
-            var news = "";
+            
 
             stream.on(GoogleNews.DATA, function(data) {
                 //console.log('Stringify ' + JSON.stringify(data));
