@@ -33,7 +33,7 @@ restService.post('/inputmsg', function(req, res) {
 
             stream.on(GoogleNews.DATA, function(data) {
                 //console.log('Stringify ' + JSON.stringify(data));
-                console.log('Data Event received... ' + data.link);
+                //console.log('Data Event received... ' + data.link);
                 //callback( data.title );
                 speech = speech + "" + os.EOL + "" + data.title + "! ";
                 if( data.link != null && data.link != NaN && req.body.result.metadata.intentName == "News - link" ){
@@ -48,7 +48,7 @@ restService.post('/inputmsg', function(req, res) {
                     
                     googl.shorten(newsurl)
                     .then(function (shortUrl) {
-                        console.log(shortUrl);
+                        console.log("shortUrl  : " + shortUrl);
                         speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
                     })
                     .catch(function (err) {
