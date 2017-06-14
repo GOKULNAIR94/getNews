@@ -36,8 +36,26 @@ restService.post('/inputmsg', function(req, res) {
                 console.log('Data Event received... ' + data.link);
                 //callback( data.title );
                 speech = speech + "" + os.EOL + "" + data.title + "! ";
-                if( data.link != null && data.link != NaN && req.body.result.metadata.intentName == "News - link" )
-                    speech =  speech + "\n More @ : "+ data.link + "!" + os.EOL;
+                if( data.link != null && data.link != NaN && req.body.result.metadata.intentName == "News - link" ){
+                    
+                    var newsurl = data.link;
+                    //tera code
+                    var googl = require('goo.gl');
+                    
+                    googl.setKey('AIzaSyD75VTq7NYjo6nvRgF354QomarX14NWTbY');
+                    
+                    googl.getKey();
+                    
+                    googl.shorten(newsurl)
+                    .then(function (shortUrl) {
+                        console.log(shortUrl);
+                        speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
+                    })
+                    .catch(function (err) {
+                        console.error(err.message);
+                    });
+                }
+                    
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
