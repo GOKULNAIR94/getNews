@@ -32,7 +32,7 @@ restService.post('/inputmsg', function(req, res) {
         googleNews.stream(track, function(stream) {
             
 
-            stream.on(GoogleNews.DATA, function( data, callback ) {
+            stream.on(GoogleNews.DATA, function( data ) {
                 //console.log('Stringify ' + JSON.stringify(data));
                 //console.log('Data Event received... ' + data.link);
                 //callback( data.title );
@@ -59,9 +59,6 @@ restService.post('/inputmsg', function(req, res) {
                 }
                 else
                     speech = speech + "" + os.EOL + "" + data.title + "! ";
-                
-                
-                return callback("Hi");
                     
             });
 
