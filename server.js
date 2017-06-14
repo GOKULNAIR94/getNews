@@ -29,10 +29,10 @@ restService.post('/inputmsg', function(req, res) {
         track = tracker;
         var speech = "";
         var news = "";
-        googleNews.stream(track, function(stream) {
+        googleNews.stream(track, function(stream, callback) {
             
 
-            stream.on(GoogleNews.DATA, function(data) {
+            stream.on(GoogleNews.DATA, function(data, callback) {
                 //console.log('Stringify ' + JSON.stringify(data));
                 //console.log('Data Event received... ' + data.link);
                 //callback( data.title );
@@ -47,7 +47,7 @@ restService.post('/inputmsg', function(req, res) {
                     googl.getKey();
                     
                     googl.shorten(newsurl)
-                    .then(function (shortUrl) {
+                    .then(function (shortUrl, callback) {
                         console.log("shortUrl  : " + shortUrl);
                         speech = speech + "" + os.EOL + "" + data.title + "! ";
                         speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
@@ -65,12 +65,12 @@ restService.post('/inputmsg', function(req, res) {
                 console.log('Error Event received... ' + error);
             });
             
-            setTimeout(function() {
+            //setTimeout(function() {
                 return res.json({
                   speech: speech,
                   displayText: speech
                 })
-            }, 2000);
+            //}, 2000);
             
         });
     }
