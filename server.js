@@ -17,16 +17,7 @@ restService.post('/inputmsg', function( req, res) {
 	console.log("Req : " + JSON.stringify(req.body) )
     var intentName = req.body.result.metadata.intentName;
     var tracker = "";
-	try{				
-		if( req.body.result.contexts[0].parameters.track != null  && req.body.result.contexts[0].parameters.track != "")
-			tracker = req.body.result.contexts[0].parameters.track;
-		else
-			if( varTrack != null && varTrack != "")
-				tracker = req.body;
-	}
-	catch(e){
-		tracker = req.body;
-	}
+	tracker = req.body.tracker;
 
 		
 	console.log( "intentName : " + intentName );
