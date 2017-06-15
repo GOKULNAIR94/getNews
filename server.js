@@ -12,12 +12,12 @@ restService.use(bodyParser.json());
 
 var jsonQuery = require('json-query');
 var os = require('os');
-restService.post('/getNewsApi', function( varTrack, res) {
-	
-	console.log("Req : " + JSON.stringify(req.body) )
-    //var intentName = req.body.result.metadata.intentName;
+restService.post('/inputmsg', function( req, res) {
+
+    var intentName = req.body.result.metadata.intentName;
     var tracker = "";
-	tracker = varTrack.body;
+    if( req.body.result.contexts[0].parameters.track != null  && req.body.result.contexts[0].parameters.track != "")
+		tracker = req.body.result.contexts[0].parameters.track;
 
 		
 	console.log( "intentName : " + intentName );
@@ -41,7 +41,7 @@ restService.post('/getNewsApi', function( varTrack, res) {
                 //console.log('Stringify ' + JSON.stringify(data));
                 //console.log('Data Event received... ' + data.link);
                 //callback( data.title );
-                if( data.link != null && data.link != NaN ){//&& req.body.result.metadata.intentName == "News - link" ){
+                if( data.link != null && data.link != NaN && req.body.result.metadata.intentName == "News - link" ){
                     
                     var newsurl = data.link;
                     //tera code
