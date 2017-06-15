@@ -12,13 +12,12 @@ restService.use(bodyParser.json());
 
 var jsonQuery = require('json-query');
 var os = require('os');
-restService.post('/inputmsg', function( req, res) {
+restService.post('/inputmsg', function( varTrack ) {
 
     console.log("Req  : " + JSON.stringify(req.body));
 	var intentName = req.body.result.metadata.intentName;
     var tracker = "";
-    if( req.body.result.contexts[0].parameters.track != null  && req.body.result.contexts[0].parameters.track != "")
-		tracker = req.body.result.contexts[0].parameters.track;
+	tracker = varTrack.body;
 
 		
 	console.log( "intentName : " + intentName );
@@ -72,10 +71,11 @@ restService.post('/inputmsg', function( req, res) {
             });
             
             setTimeout(function() {
-                return res.json({
-                  speech: speech,
-                  displayText: speech
-                })
+               json.send(speech);
+			   //return res.json({
+                //  speech: speech,
+                //  displayText: speech
+                //})
             }, 2500);
             
         });
