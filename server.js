@@ -15,7 +15,7 @@ var os = require('os');
 restService.post('/getNewsApi', function( varTrack, res) {
 	
 	console.log("Req : " + JSON.stringify(req.body) )
-    var intentName = req.body.result.metadata.intentName;
+    //var intentName = req.body.result.metadata.intentName;
     var tracker = "";
 	tracker = varTrack.body;
 
@@ -41,7 +41,7 @@ restService.post('/getNewsApi', function( varTrack, res) {
                 //console.log('Stringify ' + JSON.stringify(data));
                 //console.log('Data Event received... ' + data.link);
                 //callback( data.title );
-                if( data.link != null && data.link != NaN && req.body.result.metadata.intentName == "News - link" ){
+                if( data.link != null && data.link != NaN ){//&& req.body.result.metadata.intentName == "News - link" ){
                     
                     var newsurl = data.link;
                     //tera code
