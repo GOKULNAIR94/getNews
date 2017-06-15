@@ -34,6 +34,7 @@ restService.post('/inputmsg', function( req, res ) {
         track = tracker;
         var speech = "";
         var news = "";
+		var count = 0 ;
         googleNews.stream(track, function(stream) {
             
 
@@ -41,7 +42,7 @@ restService.post('/inputmsg', function( req, res ) {
                 //console.log('Stringify ' + JSON.stringify(data));
                 //console.log('Data Event received... ' + data.link);
                 //callback( data.title );
-                if( data.link != null && data.link != NaN && req.body.intentName == "opty - link" ){
+                if( data.link != null && data.link != NaN ){
                     
                     var newsurl = data.link;
                     //tera code
@@ -64,6 +65,8 @@ restService.post('/inputmsg', function( req, res ) {
                 else
                     speech = speech + "" + os.EOL + "" + data.title + "! ";
                     
+				count++;
+				console.log("Count : " + count);
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
