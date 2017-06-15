@@ -57,6 +57,7 @@ restService.post('/inputmsg', function( req, res ) {
                         console.log("shortUrl  : " + shortUrl);
                         speech = speech + "" + os.EOL + "" + data.title + "! ";
                         speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
+						count++;
                     })
                     .catch(function (err) {
                         console.error(err.message);
@@ -64,10 +65,11 @@ restService.post('/inputmsg', function( req, res ) {
                 }
                 else
                     speech = speech + "" + os.EOL + "" + data.title + "! ";
+				
 				if( count == 10 )
 					res.json(speech);
 				
-				count++;
+				
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
