@@ -14,7 +14,8 @@ var jsonQuery = require('json-query');
 var os = require('os');
 restService.post('/inputmsg', function( req, res) {
 
-    var intentName = req.body.result.metadata.intentName;
+    console.log("Req  : " + JSON.stringify(req.body));
+	var intentName = req.body.result.metadata.intentName;
     var tracker = "";
     if( req.body.result.contexts[0].parameters.track != null  && req.body.result.contexts[0].parameters.track != "")
 		tracker = req.body.result.contexts[0].parameters.track;
