@@ -41,7 +41,7 @@ restService.post('/inputmsg', function( req, res ) {
                 //console.log('Stringify ' + JSON.stringify(data));
                 //console.log('Data Event received... ' + data.link);
                 //callback( data.title );
-                if( data.link != null && data.link != NaN && req.body.result.metadata.intentName == "News - link" ){
+                if( data.link != null && data.link != NaN && req.body.intentName == "opty - link" ){
                     
                     var newsurl = data.link;
                     //tera code
