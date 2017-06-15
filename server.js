@@ -64,22 +64,15 @@ restService.post('/inputmsg', function( req, res ) {
                 }
                 else
                     speech = speech + "" + os.EOL + "" + data.title + "! ";
-                    
+				if( count == 10 )
+					res.json(speech);
+				
 				count++;
-				console.log("Count : " + count);
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
                 console.log('Error Event received... ' + error);
             });
-            
-            setTimeout(function() {
-               res.json(speech);
-			   //return res.json({
-                //  speech: speech,
-                //  displayText: speech
-                //})
-            }, 2500);
             
         });
     }
