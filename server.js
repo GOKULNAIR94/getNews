@@ -12,12 +12,12 @@ restService.use(bodyParser.json());
 
 var jsonQuery = require('json-query');
 var os = require('os');
-restService.post('/inputmsg', function( req, res) {
+restService.post('/getNewsApi', function( varTrack, res) {
 	
 	console.log("Req : " + JSON.stringify(req.body) )
     var intentName = req.body.result.metadata.intentName;
     var tracker = "";
-	tracker = req.body.tracker;
+	tracker = varTrack.body;
 
 		
 	console.log( "intentName : " + intentName );
