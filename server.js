@@ -12,11 +12,17 @@ restService.use(bodyParser.json());
 
 var jsonQuery = require('json-query');
 var os = require('os');
-restService.post('/inputmsg', function(req, res) {
+restService.post('/inputmsg', function( varTrack, req, res) {
 
     var intentName = req.body.result.metadata.intentName;
-    var tracker = req.body.result.contexts[0].parameters.track;
-    console.log( "intentName : " + intentName );
+    var tracker = "";
+    if( req.body.result.contexts[0].parameters.track != null  && req.body.result.contexts[0].parameters.track != "")
+		tracker = req.body.result.contexts[0].parameters.track
+	else
+		if( varTrack != null && varTrack != "")
+			tracker = varTrack;
+		
+	console.log( "intentName : " + intentName );
     console.log( "tracker : " + tracker	 );
     var content;
     var speech = '';
