@@ -71,7 +71,7 @@ restService.post('/inputmsg', function( req, res ) {
             });
             
             setTimeout(function() {
-               json.send(speech);
+               res.json(speech);
 			   //return res.json({
                 //  speech: speech,
                 //  displayText: speech
