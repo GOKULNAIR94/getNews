@@ -17,6 +17,7 @@ restService.post('/inputmsg', function(req, res) {
     var intentName = req.body.result.metadata.intentName;
     var tracker = req.body.result.contexts[0].parameters.track;
     console.log( "intentName : " + intentName );
+    console.log( "tracker : " + tracker	 );
     var content;
     var speech = '';
     try
