@@ -15,9 +15,9 @@ var os = require('os');
 restService.post('/inputmsg', function( req, res ) {
 
     console.log("Req  : " + JSON.stringify(req.body));
-	var intentName = req.body.result.metadata.intentName;
+	var intentName = req.body.intentName;
     var tracker = "";
-	tracker = req.body;
+	tracker = req.body.track;
 
 		
 	console.log( "intentName : " + intentName );
