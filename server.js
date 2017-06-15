@@ -34,7 +34,7 @@ restService.post('/inputmsg', function( req, res ) {
         track = tracker;
         var speech = "";
         var news = "";
-		var count = 0 ;
+		var count = 1 ;
         googleNews.stream(track, function(stream) {
             
 
@@ -54,7 +54,7 @@ restService.post('/inputmsg', function( req, res ) {
                     
                     googl.shorten(newsurl)
                     .then(function ( shortUrl ) {
-                        console.log("shortUrl  : " + shortUrl);
+                        console.log("count  : " + count);
                         speech = speech + "" + os.EOL + "" + data.title + "! ";
                         speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
 						if( count == 10 )
@@ -71,11 +71,7 @@ restService.post('/inputmsg', function( req, res ) {
 							res.json(speech);
 					count++;
 				}
-                    
-				
-				
-				
-				
+                    	
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
