@@ -57,7 +57,7 @@ restService.post('/inputmsg', function( req, res ) {
                         console.log("count  : " + count);
                         speech = speech + "" + os.EOL + "" + data.title + "! ";
                         speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
-						if( count == 10 )
+						if( count == 8 )
 							res.json(speech);
 						count++;
                     })
@@ -67,7 +67,7 @@ restService.post('/inputmsg', function( req, res ) {
                 }
                 else{
 					speech = speech + "" + os.EOL + "" + data.title + "! ";
-					if( count == 10 )
+					if( count == 8 )
 							res.json(speech);
 					count++;
 				}
