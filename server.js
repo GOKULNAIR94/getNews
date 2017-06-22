@@ -61,7 +61,8 @@ restService.post('/inputmsg', function( req, res ) {
 							console.log( " Speech : " + speech );
                             return res.json({
 							  speech: speech,
-							  displayText: speech
+							  displayText: speech,
+							  source: 'webhook-OSC-oppty'
 							})
                         }
 						count++;
@@ -75,7 +76,8 @@ restService.post('/inputmsg', function( req, res ) {
 					if( count == 10 ){
                         return res.json({
                           speech: speech,
-                          displayText: speech
+                          displayText: speech,
+						  source: 'webhook-OSC-oppty'
                         })
                     }
 					count++;
