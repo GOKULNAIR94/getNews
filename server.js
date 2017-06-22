@@ -58,7 +58,8 @@ restService.post('/inputmsg', function( req, res ) {
                         speech = speech + "" + os.EOL + "" + data.title + "! ";
                         speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
 						if( count == 10 ){
-                            res.json({speech})
+							console.log("speech news : " + speech);
+                            res.json({speech});
                         }
 						count++;
                     })
