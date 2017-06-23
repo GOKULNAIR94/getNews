@@ -69,7 +69,14 @@ restService.post('/inputmsg', function( req, res ) {
                         speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
 						if( count == 10 ){
 							console.log( " Speech : " + speech );
-                            res.json(speech)
+                            if( req.body.intentName != null)
+								res.json(speech);
+							else{
+								return res.json({
+									  speech: speech,
+									  displayText: speech
+									})
+							}
                         }
 						count++;
                     })
@@ -80,7 +87,14 @@ restService.post('/inputmsg', function( req, res ) {
                 else{
 					speech = speech + "" + os.EOL + "" + data.title + "! ";
 					if( count == 10 ){
-                        res.json(speech)
+                        if( req.body.intentName != null)
+							res.json(speech);
+						else{
+							return res.json({
+									  speech: speech,
+									  displayText: speech
+									})
+						}
                     }
 					count++;
 				}
