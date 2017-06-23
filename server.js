@@ -15,9 +15,19 @@ var os = require('os');
 restService.post('/inputmsg', function( req, res ) {
 
     console.log("Req  : " + JSON.stringify(req.body));
-	var intentName = req.body.intentName;
+	var intentName = "";
     var tracker = "";
-	tracker = req.body.track;
+	if( req.body.intentName != null)
+		intentName = req.body.intentName;
+	else{
+		intentName = req.body.result.metadata.intentName;
+	}
+	if( req.body.track != null)
+		tracker = req.body.track;
+	else{
+		tracker = req.body.result.contexts[0].parameters.track;
+	}
+	
 
 		
 	console.log( "intentName : " + intentName );
@@ -59,11 +69,7 @@ restService.post('/inputmsg', function( req, res ) {
                         speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
 						if( count == 10 ){
 							console.log( " Speech : " + speech );
-                            res.json({
-							  speech: speech,
-							  displayText: speech,
-							  source: 'webhook-OSC-oppty'
-							})
+                            res.json(speech)
                         }
 						count++;
                     })
@@ -74,11 +80,7 @@ restService.post('/inputmsg', function( req, res ) {
                 else{
 					speech = speech + "" + os.EOL + "" + data.title + "! ";
 					if( count == 10 ){
-                        res.json({
-                          speech: speech,
-                          displayText: speech,
-						  source: 'webhook-OSC-oppty'
-                        })
+                        res.json(speech)
                     }
 					count++;
 				}
