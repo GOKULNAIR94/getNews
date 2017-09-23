@@ -164,10 +164,12 @@ restService.post('/inputmsg', function(req, res) {
                             }
                             if (count == 10) {
                                 console.log(" Speech : " + speech);
-                                if (req.body.intentName != null)
+                                if (req.body.intentName != null){
                                     res.json(speech);
+                                }
+                                    
                                 else {
-                                    return res.json({
+                                    res.json({
                                         speech: speech,
                                         displayText: speech
                                     })
@@ -181,14 +183,7 @@ restService.post('/inputmsg', function(req, res) {
                 } else {
                     speech = speech + "" + os.EOL + "" + data.title + "! ";
                     if (count == 10) {
-                        if (req.body.intentName != null)
-                            res.json(speech);
-                        else {
-                            return res.json({
-                                speech: speech,
-                                displayText: speech
-                            })
-                        }
+                        res.json(returnJson);
                     }
                     count++;
                 }
