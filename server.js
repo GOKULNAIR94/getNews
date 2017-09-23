@@ -165,7 +165,7 @@ restService.post('/inputmsg', function(req, res) {
                             if (count == 10) {
                                 console.log(" Speech : " + speech);
                                 console.log(" returnJson : " + JSON.stringify(returnJson));
-                                res.json(returnJson);
+                                return res.json(returnJson)
                             }
                             count++;
                         })
