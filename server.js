@@ -72,8 +72,7 @@ restService.post('/inputmsg', function(req, res) {
                                 speech = speech + "" + os.EOL + "" + data.title + "! ";
                                 speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
                                 returnJson = {
-                                    speech: "Hi",
-                                    displayText: "Hi",
+                                    
                                     data: {
                                         google: {
                                             'expectUserResponse': true,
