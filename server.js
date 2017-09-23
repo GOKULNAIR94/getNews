@@ -12,30 +12,31 @@ restService.use(bodyParser.json());
 
 var jsonQuery = require('json-query');
 var os = require('os');
-restService.post('/inputmsg', function( req, res ) {
+var SendRes = require("./sendres");
+
+restService.post('/inputmsg', function(req, res) {
 
     console.log("Req  : " + JSON.stringify(req.body));
-	var intentName = "";
+    var intentName = "";
     var tracker = "";
-	if( req.body.intentName != null)
-		intentName = req.body.intentName;
-	else{
-		intentName = req.body.result.metadata.intentName;
-	}
-	if( req.body.track != null)
-		tracker = req.body.track;
-	else{
-		tracker = req.body.result.contexts[0].parameters.track;
-	}
-	
+    if (req.body.intentName != null)
+        intentName = req.body.intentName;
+    else {
+        intentName = req.body.result.metadata.intentName;
+    }
+    if (req.body.track != null)
+        tracker = req.body.track;
+    else {
+        tracker = req.body.result.contexts[0].parameters.track;
+    }
 
-		
-	console.log( "intentName : " + intentName );
-    console.log( "tracker : " + tracker	 );
+
+
+    console.log("intentName : " + intentName);
+    console.log("tracker : " + tracker);
     var content;
     var speech = '';
-    try
-    {   
+    try {
         var GoogleNews, googleNews, track;
 
         GoogleNews = require('google-news');
@@ -44,72 +45,161 @@ restService.post('/inputmsg', function( req, res ) {
         track = tracker;
         var speech = "";
         var news = "";
-		var count = 1 ;
+        var count = 1;
         googleNews.stream(track, function(stream) {
-            
 
-            stream.on(GoogleNews.DATA, function( data ) {
+
+            stream.on(GoogleNews.DATA, function(data) {
                 //console.log('Stringify ' + JSON.stringify(data));
                 //console.log('Data Event received... ' + data.link);
                 //callback( data.title );
-                if( data.link != null && data.link != NaN ){
-                    
+                if (data.link != null && data.link != NaN) {
+
                     var newsurl = data.link;
                     //tera code
                     var googl = require('goo.gl');
-                    
+
                     googl.setKey('AIzaSyD75VTq7NYjo6nvRgF354QomarX14NWTbY');
-                    
+
                     googl.getKey();
-                    
+
                     googl.shorten(newsurl)
-                    .then(function ( shortUrl ) {
-                        console.log("count  : " + count);
-                        speech = speech + "" + os.EOL + "" + data.title + "! ";
-                        speech =  speech + "\n More @ : "+ shortUrl + "!" + os.EOL;
-						if( count == 10 ){
-							console.log( " Speech : " + speech );
-                            if( req.body.intentName != null)
-								res.json(speech);
-							else{
-								return res.json({
-									  speech: speech,
-									  displayText: speech
-									})
-							}
+                        .then(function(shortUrl) {
+                            console.log("count  : " + count);
+                            if (req.body.originalRequest.source == "google") {
+                                speech = speech + "" + os.EOL + "" + data.title + "! ";
+                                speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
+                                returnJson = {
+                                    speech: speech,
+                                    displayText: speech,
+                                    data: {
+                                        google: {
+                                            'expectUserResponse': true,
+                                            'isSsml': false,
+                                            'noInputPrompts': [],
+                                            'richResponse': {
+                                                'items': [{
+                                                        'simpleResponse': {
+                                                            'textToSpeech': 'Hi! My name is VIKI (Virtual Interactive Kinetic Intelligence) and I am here to help! Please click the below button to Login!',
+                                                            'displayText': 'Hi! My name is VIKI (Virtual Interactive Kinetic Intelligence) and I am here to help!'
+                                                        }
+                                                    },
+                                                    {
+                                                        'basicCard': {
+                                                            'title': 'VIKI',
+                                                            'buttons': [{
+                                                                'title': 'Login to Viki',
+                                                                'openUrlAction': {
+                                                                    'url': "https://vikii.herokuapp.com/login?id=" + userid
+                                                                }
+                                                            }]
+                                                        }
+                                                    }
+                                                ],
+                                                "carouselSelect": {
+                                                    "items": [{
+                                                            "optionInfo": {
+                                                                "key": "MATH_AND_PRIME",
+                                                                "synonyms": [
+                                                                    "math",
+                                                                    "math and prime",
+                                                                    "prime numbers",
+                                                                    "prime"
+                                                                ]
+                                                            },
+                                                            "title": "Math & prime numbers",
+                                                            "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
+                                                            "image": {
+                                                                "url": "http://example.com/math_and_prime.jpg",
+                                                                "accessibilityText": "Math & prime numbers"
+                                                            }
+                                                        },
+                                                        {
+                                                            "optionInfo": {
+                                                                "key": "EGYPT",
+                                                                "synonyms": [
+                                                                    "religion",
+                                                                    "egpyt",
+                                                                    "ancient egyptian"
+                                                                ]
+                                                            },
+                                                            "title": "Ancient Egyptian religion",
+                                                            "description": "42 gods who ruled on the fate of the dead in the afterworld. Throughout the under…",
+                                                            "image": {
+                                                                "url": "http://example.com/egypt",
+                                                                "accessibilityText": "Egypt"
+                                                            }
+                                                        },
+                                                        {
+                                                            "optionInfo": {
+                                                                "key": "RECIPES",
+                                                                "synonyms": [
+                                                                    "recipes",
+                                                                    "recipe",
+                                                                    "42 recipes"
+                                                                ]
+                                                            },
+                                                            "title": "42 recipes with 42 ingredients",
+                                                            "description": "Here's a beautifully simple recipe that's full of flavor! All you need is some ginger and…",
+                                                            "image": {
+                                                                "url": "http://example.com/recipe",
+                                                                "accessibilityText": "Recipe"
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                speech = speech + "" + os.EOL + "" + data.title + "! ";
+                                speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
+                                returnJson = {
+                                    speech: speech,
+                                    displayText: speech
+                                }
+                            }
+                            if (count == 10) {
+                                console.log(" Speech : " + speech);
+                                if (req.body.intentName != null)
+                                    res.json(speech);
+                                else {
+                                    return res.json({
+                                        speech: speech,
+                                        displayText: speech
+                                    })
+                                }
+                            }
+                            count++;
+                        })
+                        .catch(function(err) {
+                            console.error(err.message);
+                        });
+                } else {
+                    speech = speech + "" + os.EOL + "" + data.title + "! ";
+                    if (count == 10) {
+                        if (req.body.intentName != null)
+                            res.json(speech);
+                        else {
+                            return res.json({
+                                speech: speech,
+                                displayText: speech
+                            })
                         }
-						count++;
-                    })
-                    .catch(function (err) {
-                        console.error(err.message);
-                    });
-                }
-                else{
-					speech = speech + "" + os.EOL + "" + data.title + "! ";
-					if( count == 10 ){
-                        if( req.body.intentName != null)
-							res.json(speech);
-						else{
-							return res.json({
-									  speech: speech,
-									  displayText: speech
-									})
-						}
                     }
-					count++;
-				}
-                    	
+                    count++;
+                }
+
             });
 
             stream.on(GoogleNews.ERROR, function(error) {
                 console.log('Error Event received... ' + error);
             });
-            
+
         });
-    }
-    catch(e)
-    {
-        console.log("Error : " + e );
+    } catch (e) {
+        console.log("Error : " + e);
     }
 });
 
