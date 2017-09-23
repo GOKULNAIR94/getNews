@@ -86,7 +86,8 @@ restService.post('/inputmsg', function(req, res) {
                                                             'displayText': "Hi"
                                                         }
                                                     }
-                                                ],
+                                                ]
+                                            },
                                                 "carouselSelect": {
                                                     "items": [{
                                                             "optionInfo": {
@@ -139,7 +140,6 @@ restService.post('/inputmsg', function(req, res) {
                                                         }
                                                     ]
                                                 }
-                                            }
                                         }
                                     }
                                 }
