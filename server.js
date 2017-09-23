@@ -72,9 +72,6 @@ restService.post('/inputmsg', function(req, res) {
                                 speech = speech + "" + os.EOL + "" + data.title + "! ";
                                 speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
                                 returnJson = {
-                                    
-                                    data: {
-                                        google: {
                                             'expectUserResponse': true,
                                             "conversationToken": "{\"state\":null,\"data\":{}}",
                                             "expectedInputs": [
@@ -168,9 +165,7 @@ restService.post('/inputmsg', function(req, res) {
         }
     ]
                                             
-                                        }
-                                    }
-                                }
+                                        };
                             } else {
                                 speech = speech + "" + os.EOL + "" + data.title + "! ";
                                 speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
