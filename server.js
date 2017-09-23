@@ -85,17 +85,6 @@ restService.post('/inputmsg', function(req, res) {
                                                             'textToSpeech': "Hi",
                                                             'displayText': "Hi"
                                                         }
-                                                    },
-                                                    {
-                                                        'basicCard': {
-                                                            'title': 'VIKI',
-                                                            'buttons': [{
-                                                                'title': 'Login to Viki',
-                                                                'openUrlAction': {
-                                                                    'url': "https://vikii.herokuapp.com/login?id="
-                                                                }
-                                                            }]
-                                                        }
                                                     }
                                                 ],
                                                 "carouselSelect": {
@@ -165,7 +154,7 @@ restService.post('/inputmsg', function(req, res) {
                             if (count == 10) {
                                 console.log(" Speech : " + speech);
                                 console.log(" returnJson : " + JSON.stringify(returnJson));
-                                return res.json(returnJson)
+                                res.json(returnJson)
                             }
                             count++;
                         })
