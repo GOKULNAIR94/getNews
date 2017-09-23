@@ -90,7 +90,7 @@ restService.post('/inputmsg', function(req, res) {
                                                             'buttons': [{
                                                                 'title': 'Login to Viki',
                                                                 'openUrlAction': {
-                                                                    'url': "https://vikii.herokuapp.com/login?id=" + userid
+                                                                    'url': "https://vikii.herokuapp.com/login?id="
                                                                 }
                                                             }]
                                                         }
