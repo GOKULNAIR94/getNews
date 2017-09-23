@@ -164,16 +164,8 @@ restService.post('/inputmsg', function(req, res) {
                             }
                             if (count == 10) {
                                 console.log(" Speech : " + speech);
-                                if (req.body.intentName != null){
-                                    res.json(speech);
-                                }
-                                    
-                                else {
-                                    res.json({
-                                        speech: speech,
-                                        displayText: speech
-                                    })
-                                }
+                                console.log(" returnJson : " + JSON.stringify(returnJson));
+                                res.json(returnJson);
                             }
                             count++;
                         })
@@ -183,7 +175,14 @@ restService.post('/inputmsg', function(req, res) {
                 } else {
                     speech = speech + "" + os.EOL + "" + data.title + "! ";
                     if (count == 10) {
-                        res.json(returnJson);
+                        if (req.body.intentName != null)
+                            res.json(speech);
+                        else {
+                            return res.json({
+                                speech: speech,
+                                displayText: speech
+                            })
+                        }
                     }
                     count++;
                 }
