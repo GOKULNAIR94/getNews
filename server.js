@@ -36,6 +36,7 @@ restService.post('/inputmsg', function(req, res) {
     console.log("tracker : " + tracker);
     var content;
     var speech = '';
+    var returnJson;
     try {
         var GoogleNews, googleNews, track;
 
