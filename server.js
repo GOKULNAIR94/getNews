@@ -87,8 +87,7 @@ restService.post('/inputmsg', function(req, res) {
                                                         }
                                                     },
                                                     {
-                                                        "carouselSelect": {
-                                                            "title" : "Tet Caro",
+                                                        "simpleSelect": {
                                                     "items": [{
                                                             "optionInfo": {
                                                                 "key": "MATH_AND_PRIME",
