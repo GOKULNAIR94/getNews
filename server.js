@@ -81,7 +81,8 @@ restService.post('/inputmsg', function(req, res) {
                     "items": [
                         {
                             "simpleResponse": {
-                                "textToSpeech": "Alright! Here are a few things you can learn. Which sounds interesting?"
+                                "textToSpeech": "Alright! Here are a few things you can learn. Which sounds interesting?",
+                                "displayText": 'Hi! My name is VIKI (Virtual Interactive Kinetic Intelligence) and I am here to help!'
                             }
                         }
                     ],
