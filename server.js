@@ -71,7 +71,7 @@ restService.post('/inputmsg', function(req, res) {
                             if (req.body.originalRequest.source == "google") {
                                 console.log("Google Response:");
                                 speech = speech + "" + os.EOL + "" + data.title + "! ";
-                                speechVoice = speechVoice + "" + os.EOL + "" + data.title + "! ";
+                                speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
                                 
                                 speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
                                 returnJson = {
@@ -151,7 +151,7 @@ restService.post('/inputmsg', function(req, res) {
                             } else {
                                 speech = speech + "" + os.EOL + "" + data.title + "! ";
                                 speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
-                                speechVoice = speechVoice + "" + os.EOL + "" + data.title + "! ";
+                                speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
                                 returnJson = {
                                     speech: speechVoice,
                                     displayText: speech
