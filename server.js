@@ -36,6 +36,7 @@ restService.post('/inputmsg', function(req, res) {
     console.log("tracker : " + tracker);
     var content;
     var speech = '';
+    var speechVoice = "";
     var returnJson;
     try {
         var GoogleNews, googleNews, track;
@@ -70,9 +71,11 @@ restService.post('/inputmsg', function(req, res) {
                             if (req.body.originalRequest.source == "google") {
                                 console.log("Google Response:");
                                 speech = speech + "" + os.EOL + "" + data.title + "! ";
+                                speechVoice = speechVoice + "" + os.EOL + "" + data.title + "! ";
+                                
                                 speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
                                 returnJson = {
-                                    speech: speech,
+                                    speech: speechVoice,
                                     displayText: speech,
                                     data: {
                                         google: {
@@ -82,7 +85,7 @@ restService.post('/inputmsg', function(req, res) {
                                             'richResponse': {
                                                 'items': [{
                                                         'simpleResponse': {
-                                                            'textToSpeech': speech,
+                                                            'textToSpeech': speechVoice,
                                                             'displayText': speech
                                                         }
                                                     },
@@ -148,8 +151,9 @@ restService.post('/inputmsg', function(req, res) {
                             } else {
                                 speech = speech + "" + os.EOL + "" + data.title + "! ";
                                 speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
+                                speechVoice = speechVoice + "" + os.EOL + "" + data.title + "! ";
                                 returnJson = {
-                                    speech: speech,
+                                    speech: speechVoice,
                                     displayText: speech
                                 }
                             }
