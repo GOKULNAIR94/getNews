@@ -82,8 +82,8 @@ restService.post('/inputmsg', function(req, res) {
                                             'richResponse': {
                                                 'items': [{
                                                         'simpleResponse': {
-                                                            'textToSpeech': "Hi",
-                                                            'displayText': "Hi"
+                                                            'textToSpeech': speech,
+                                                            'displayText': speech
                                                         }
                                                     },
                                                     {
