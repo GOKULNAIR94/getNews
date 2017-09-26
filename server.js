@@ -85,7 +85,7 @@ restService.post('/inputmsg', function(req, res) {
                             "title": "American Bank",
                             "description": data.title + ".",
                             "image": {
-                                "url": "https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
+                                "url": "",
                                 "accessibilityText": "Google Pixel"
                             }
                         });
