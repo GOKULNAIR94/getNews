@@ -102,19 +102,21 @@ restService.post('/inputmsg', function(req, res) {
                                                         "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                                                         "carouselSelect": {
                                                             "items": [{
-                                                                "optionInfo": {
-                                                                    "key": "googlePixel",
-                                                                    "synonyms": [
-                                                                        "googlePixel"
-                                                                    ]
-                                                                },
-                                                                "title": "American Bank",
-                                                                "description": "googlePixel.",
-                                                                "image": {
-                                                                    "url": "https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
-                                                                    "accessibilityText": "Google Pixel"
-                                                                }
-                                                            }]
+                                                                    "optionInfo": {
+                                                                        "key": "googlePixel",
+                                                                        "synonyms": [
+                                                                            "Google Pixel XL",
+                                                                            "Pixel",
+                                                                            "Pixel XL"
+                                                                        ]
+                                                                    },
+                                                                    "title": "Google Pixel",
+                                                                    "description": "Pixel. Phone by Google.",
+                                                                    "image": {
+                                                                        "url": "https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
+                                                                        "accessibilityText": "Google Pixel"
+                                                                    }
+                                                                }]
                                                         }
                                                     }
                                                 }
