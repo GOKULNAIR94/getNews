@@ -46,7 +46,7 @@ restService.post('/inputmsg', function(req, res) {
         
         var news = "";
         var count = 1;
-        var carousel = [];
+        var carousels = [];
         
         googleNews.stream(track, function(stream) {
 
@@ -74,7 +74,7 @@ restService.post('/inputmsg', function(req, res) {
                             speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
                             speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
                         
-                        carousel.push({
+                        carousels.push({
                             "optionInfo": {
                                 "key": "open " + shortUrl,
                                 "synonyms": [
