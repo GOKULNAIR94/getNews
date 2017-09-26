@@ -113,7 +113,7 @@ restService.post('/inputmsg', function(req, res) {
                                                     "synonym of title 3"
                                                   ]
                                                 },
-                                                "title":"",
+                                                "title":"American Bank",
                                                 "description":"American Bank Center opens new branch at U-Mary - Bismarck Tribune!",
                                                 "image":
                                                 {
@@ -131,7 +131,7 @@ restService.post('/inputmsg', function(req, res) {
                                                     "Assistant on the Google Home"
                                                   ]
                                                 },
-                                                "title":"",
+                                                "title":"American Bank",
                                                 "description":" Illinois' First American Bank Corp. acquiring Kenosha's Southport Bank - Milwaukee Journal Sentinel! ",
                                                 "image":
                                                 {
@@ -150,7 +150,7 @@ restService.post('/inputmsg', function(req, res) {
                                                     "Pixel XL"
                                                   ]
                                                 },
-                                                "title":"",
+                                                "title":"American Bank",
                                                 "description":"Branch transformation is a 'journey' at Bank of the West - American Banker ",
                                                 "image":
                                                 {
@@ -167,7 +167,7 @@ restService.post('/inputmsg', function(req, res) {
                                                     "Allo"
                                                   ]
                                                 },
-                                                "title":"Google Allo",
+                                                "title":"American Bank",
                                                 "description":"Stock in Focus: Checking the Numbers for American Bank Inc (AMBK) - Piedmont Register! ",
                                                 "image":
                                                 {
