@@ -86,19 +86,10 @@ restService.post('/inputmsg', function(req, res) {
                         
                         
                         carousels1.push({
-                                        "optionInfo": {
-                                            "key": "open " + shortUrl,
-                                            "synonyms": [
-                                                "Google Home Assistant",
-                                                "Assistant on the Google Home"
-                                            ]
-                                        },
-                                        "title": "open",
+                                        "shortUrl": shortUrl,
+                                        "title": shortUrl,
                                         "description": data.title + ".",
-                                        "image": {
-                                            "url": image,
-                                            "accessibilityText": ""
-                                        }
+                                        "image": image
                                     });
                         
 
@@ -113,8 +104,8 @@ restService.post('/inputmsg', function(req, res) {
                                                         "Assistant on the Google Home"
                                                     ]
                                                 },
-                                                "title":  carousels1[i].shortUrl,
-                                                "description": carousels1[i].data.title + ".",
+                                                "title":  carousels1[i].title,
+                                                "description": carousels1[i].description,
                                                 "image": {
                                                     "url": carousels1[i].image,
                                                     "accessibilityText": ""
