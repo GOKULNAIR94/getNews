@@ -75,7 +75,8 @@ restService.post('/inputmsg', function(req, res) {
                                 speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
                                 speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
                                 
-                                carousels.push({
+                                if( count <= 10 ){
+                                    carousels[count-1] = {
                                     "optionInfo":
                                     {
                                       "key":"googleAllo",
@@ -91,7 +92,8 @@ restService.post('/inputmsg', function(req, res) {
                                       "url":"https://allo.google.com/images/allo-logo.png",
                                       "accessibilityText":"Google Allo Logo"
                                     }
-                                  });
+                                  };
+                                }
                                 
                                 returnJson = {
                                   "speech":"Following are the top 5 news from Google.",
