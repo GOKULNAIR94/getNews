@@ -97,7 +97,37 @@ restService.post('/inputmsg', function(req, res) {
                         
 
                             if (count == 10) {
-                                carousels.push();
+                                carousels.push({
+                                                "optionInfo": {
+                                                    "key": "open " + shortUrl,
+                                                    "synonyms": [
+                                                        "Google Home Assistant",
+                                                        "Assistant on the Google Home"
+                                                    ]
+                                                },
+                                                "title": "open",
+                                                "description": data.title + ".",
+                                                "image": {
+                                                    "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                                                    "accessibilityText": ""
+                                                }
+                                            });
+                                carousels.push({
+                                                "optionInfo": {
+                                                    "key": "googlePixel",
+                                                    "synonyms": [
+                                                        "Google Pixel XL",
+                                                        "Pixel",
+                                                        "Pixel XL"
+                                                    ]
+                                                },
+                                                "title": "Google Pixel",
+                                                "description": "Pixel. Phone by Google.",
+                                                "image": {
+                                                    "url": "https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
+                                                    "accessibilityText": "Google Pixel"
+                                                }
+                                            });
                                 if (req.body.originalRequest.source == "google") {
                                     returnJson = {
                                         "speech": "Following are the top 5 news from Google.",
@@ -117,36 +147,37 @@ restService.post('/inputmsg', function(req, res) {
                                                     "data": {
                                                         "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                                                         "carouselSelect": {
-                                                            "items": [{
-                                                                    "optionInfo": {
-                                                                        "key": "open " + shortUrl,
-                                                                        "synonyms": [
-                                                                            "Google Home Assistant",
-                                                                            "Assistant on the Google Home"
-                                                                        ]
-                                                                    },
-                                                                    "title": "open",
-                                                                    "description": data.title + ".",
-                                                                    "image": {
-                                                                        "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
-                                                                        "accessibilityText": ""
-                                                                    }
-                                                                },{
-                                                                    "optionInfo": {
-                                                                        "key": "googlePixel",
-                                                                        "synonyms": [
-                                                                            "Google Pixel XL",
-                                                                            "Pixel",
-                                                                            "Pixel XL"
-                                                                        ]
-                                                                    },
-                                                                    "title": "Google Pixel",
-                                                                    "description": "Pixel. Phone by Google.",
-                                                                    "image": {
-                                                                        "url": "https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
-                                                                        "accessibilityText": "Google Pixel"
-                                                                    }
-                                                                }]
+                                                            "items": carousels
+//                                                            [{
+//                                                                    "optionInfo": {
+//                                                                        "key": "open " + shortUrl,
+//                                                                        "synonyms": [
+//                                                                            "Google Home Assistant",
+//                                                                            "Assistant on the Google Home"
+//                                                                        ]
+//                                                                    },
+//                                                                    "title": "open",
+//                                                                    "description": data.title + ".",
+//                                                                    "image": {
+//                                                                        "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+//                                                                        "accessibilityText": ""
+//                                                                    }
+//                                                                },{
+//                                                                    "optionInfo": {
+//                                                                        "key": "googlePixel",
+//                                                                        "synonyms": [
+//                                                                            "Google Pixel XL",
+//                                                                            "Pixel",
+//                                                                            "Pixel XL"
+//                                                                        ]
+//                                                                    },
+//                                                                    "title": "Google Pixel",
+//                                                                    "description": "Pixel. Phone by Google.",
+//                                                                    "image": {
+//                                                                        "url": "https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
+//                                                                        "accessibilityText": "Google Pixel"
+//                                                                    }
+//                                                                }]
                                                         }
                                                     }
                                                 }
