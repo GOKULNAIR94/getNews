@@ -100,7 +100,9 @@ restService.post('/inputmsg', function(req, res) {
                                   "data": {
                                     "google":
                                     {
-                                      "expectUserResponse":true,
+                                      'expectUserResponse': true,
+                                        'isSsml': false,
+                                        'noInputPrompts': [],
                                       "richResponse":
                                       {
                                         "items":
