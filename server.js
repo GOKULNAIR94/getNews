@@ -191,7 +191,7 @@ restService.post('/inputmsg', function(req, res) {
                                     };
                                 }
                                 //console.log(" Speech : " + speech);
-                                //console.log(" returnJson : " + JSON.stringify(returnJson));
+                                console.log(" returnJson : " + JSON.stringify(returnJson));
                                 res.json(returnJson);
                             } else {
                                 count++;
