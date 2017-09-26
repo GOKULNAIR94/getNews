@@ -83,7 +83,7 @@ restService.post('/inputmsg', function(req, res) {
                                 ]
                             },
                             "title": "American Bank",
-                            "description": Pixel. Phone by Google + ".",
+                            "description": data.title + ".",
                             "image": {
                                 "url": "https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
                                 "accessibilityText": "Google Pixel"
