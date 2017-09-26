@@ -113,8 +113,8 @@ restService.post('/inputmsg', function(req, res) {
                                                                     "title": "open",
                                                                     "description": data.title + ".",
                                                                     "image": {
-                                                                        "url": "",
-                                                                        "accessibilityText": "Test1"
+                                                                        "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                                                                        "accessibilityText": ""
                                                                     }
                                                                 },{
                                                                     "optionInfo": {
