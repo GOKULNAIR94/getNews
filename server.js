@@ -103,7 +103,7 @@ restService.post('/inputmsg', function(req, res) {
                                                         "carouselSelect": {
                                                             "items": [{
                                                                     "optionInfo": {
-                                                                        "key": "test",
+                                                                        "key": "test1",
                                                                         "synonyms": [
                                                                             "Google Home Assistant",
                                                                             "Assistant on the Google Home"
