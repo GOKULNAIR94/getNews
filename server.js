@@ -37,7 +37,9 @@ restService.post('/inputmsg', function(req, res) {
     var content;
     var speech = '';
     var speechVoice = "";
+    var carousels = [];
     var returnJson;
+    
     try {
         var GoogleNews, googleNews, track;
 
