@@ -45,7 +45,7 @@ restService.post('/inputmsg', function(req, res) {
         googleNews = new GoogleNews();
 
         track = tracker;
-        var speech = "";
+        
         var news = "";
         var count = 1;
         googleNews.stream(track, function(stream) {
@@ -70,80 +70,33 @@ restService.post('/inputmsg', function(req, res) {
                             console.log("count  : " + count);
                             if (req.body.originalRequest.source == "google") {
                                 console.log("Google Response:");
+                                console.log("data : " + JSON.stringify(data));
                                 speech = speech + "" + os.EOL + "" + data.title + "! ";
+                                speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
                                 speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
                                 
-                                speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
+                                
                                 returnJson = {
-                                    speech: speechVoice,
+                                    speech: speech,
                                     displayText: speech,
-                                    data: {
-                                        google: {
-                                            'expectUserResponse': true,
-                                            'isSsml': false,
-                                            'noInputPrompts': [],
-                                            'richResponse': {
-                                                'items': [{
-                                                        'simpleResponse': {
-                                                            'textToSpeech': speechVoice,
-                                                            'displayText': speech
-                                                        }
-                                                    },
-                                                    {
-                                                        "carouselSelect": {
-                                                    "items": [{
-                                                            "optionInfo": {
-                                                                "key": "MATH_AND_PRIME",
-                                                                "synonyms": [
-                                                                    "math",
-                                                                    "math and prime",
-                                                                    "prime numbers",
-                                                                    "prime"
-                                                                ]
-                                                            },
-                                                            "title": "Math & prime numbers",
-                                                            "description": "42 is an abundant number because the sum of its proper divisors 54 is greater…",
-                                                            "image": {
-                                                                "url": "https://image.flaticon.com/teams/slug/freepik.jpg",
-                                                                "accessibilityText": "Math & prime numbers"
-                                                            }
-                                                        },
-                                                        {
-                                                            "optionInfo": {
-                                                                "key": "EGYPT",
-                                                                "synonyms": [
-                                                                    "religion",
-                                                                    "egpyt",
-                                                                    "ancient egyptian"
-                                                                ]
-                                                            },
-                                                            "title": "Ancient Egyptian religion",
-                                                            "description": "42 gods who ruled on the fate of the dead in the afterworld. Throughout the under…",
-                                                            "image": {
-                                                                "url": "https://image.flaticon.com/teams/slug/freepik.jpg",
-                                                                "accessibilityText": "Egypt"
-                                                            }
-                                                        },
-                                                        {
-                                                            "optionInfo": {
-                                                                "key": "RECIPES",
-                                                                "synonyms": [
-                                                                    "recipes",
-                                                                    "recipe",
-                                                                    "42 recipes"
-                                                                ]
-                                                            },
-                                                            "title": "42 recipes with 42 ingredients",
-                                                            "description": "Here's a beautifully simple recipe that's full of flavor! All you need is some ginger and…",
-                                                            "image": {
-                                                                "url": "https://image.flaticon.com/teams/slug/freepik.jpg",
-                                                                "accessibilityText": "Recipe"
-                                                            }
-                                                        }
-                                                    ]
-                                                }
+                                    "data": {
+                                        "google": {
+                                            "expectUserResponse": true,
+                                            "richResponse": {
+                                                "items": [{
+                                                    "simpleResponse": {
+                                                        "textToSpeech": "This is a simple response for a carousel"
                                                     }
-                                                ]
+                                                }]
+                                            },
+                                            "systemIntent": {
+                                                "intent": "actions.intent.OPTION",
+                                                "data": {
+                                                    "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                                                    "carouselSelect": {
+                                                        "items": carousels
+                                                    }
+                                                }
                                             }
                                         }
                                     }
