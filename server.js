@@ -90,6 +90,30 @@ restService.post('/inputmsg', function(req, res) {
                                                         }
                                                     }
                                                 ]
+                                            },
+                                            "systemIntent": {
+                                                "intent": "actions.intent.OPTION",
+                                                "data": {
+                                                    "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                                                    "carouselSelect": {
+                                                        "items": [{
+                                                            "optionInfo": {
+                                                                "key": "shortUrl",
+                                                                "synonyms": [
+                                                                    "synonym of title 1",
+                                                                    "synonym of title 2",
+                                                                    "synonym of title 3"
+                                                                ]
+                                                            },
+                                                            "title": "dsadasds",
+                                                            "description": "asa",
+                                                            "image": {
+                                                                "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                                                                "accessibilityText": "Image alternate text"
+                                                            }
+                                                        }]
+                                                    }
+                                                }
                                             }
                                         }
                                     }
