@@ -89,7 +89,7 @@ restService.post('/inputmsg', function(req, res) {
                                                             'displayText': speech
                                                         }
                                                     },
-                                                    {
+                                                    
                                                         "carouselSelect": {
                                                     "items": [{
                                                             "optionInfo": {
@@ -142,7 +142,7 @@ restService.post('/inputmsg', function(req, res) {
                                                         }
                                                     ]
                                                 }
-                                                    }
+                                                    
                                                 ]
                                             }
                                         }
