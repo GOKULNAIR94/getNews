@@ -103,13 +103,13 @@ restService.post('/inputmsg', function(req, res) {
                                                         "carouselSelect": {
                                                             "items": [{
                                                                     "optionInfo": {
-                                                                        "key": "googleHome",
+                                                                        "key": "test",
                                                                         "synonyms": [
                                                                             "Google Home Assistant",
                                                                             "Assistant on the Google Home"
                                                                         ]
                                                                     },
-                                                                    "title": "Google Home",
+                                                                    "title": "Test",
                                                                     "description": "Google Home is a voice-activated speaker powered by the Google Assistant.",
                                                                     "image": {
                                                                         "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
