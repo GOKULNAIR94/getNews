@@ -37,7 +37,6 @@ restService.post('/inputmsg', function(req, res) {
     var content;
     var speech = '';
     var speechVoice = "";
-    var carousels = [];
     var returnJson;
     try {
         var GoogleNews, googleNews, track;
@@ -46,7 +45,7 @@ restService.post('/inputmsg', function(req, res) {
         googleNews = new GoogleNews();
 
         track = tracker;
-        
+        var speech = "";
         var news = "";
         var count = 1;
         googleNews.stream(track, function(stream) {
@@ -69,12 +68,13 @@ restService.post('/inputmsg', function(req, res) {
                     googl.shorten(newsurl)
                         .then(function(shortUrl) {
                             console.log("count  : " + count);
-                            console.log("data : " + JSON.stringify(data.image));
-                            speech = speech + "" + os.EOL + "" + data.title + "! ";
-                            speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
-                            speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
-                            
-                            carousels.push({
+                            if (req.body.originalRequest.source == "google") {
+                                console.log("Google Response:");
+                                speech = speech + "" + os.EOL + "" + data.title + "! ";
+                                speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
+                                
+                                speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
+                                carousels.push({
                                 "optionInfo": {
                                     "key": shortUrl,
                                     "synonyms": [
@@ -90,11 +90,8 @@ restService.post('/inputmsg', function(req, res) {
                                     "accessibilityText": "Image alternate text"
                                 }
                             });
-                    
-                            if (count == 5) {
-                                if (req.body.originalRequest.source == "google") {
-                                    console.log("Google Response");
-                                    returnJson = {
+                                
+                                returnJson = {
                                         speech: speech,
                                         displayText: speech,
                                         "data": {
@@ -113,52 +110,26 @@ restService.post('/inputmsg', function(req, res) {
                                                     "data": {
                                                         "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                                                         "carouselSelect": {
-                                                            "items": [{
-                                                                "optionInfo": {
-                                                                    "key": shortUrl,
-                                                                    "synonyms": [
-                                                                        "synonym of title 1",
-                                                                        "synonym of title 2",
-                                                                        "synonym of title 3"
-                                                                    ]
-                                                                },
-                                                                "title": "1",
-                                                                "description": data.title,
-                                                                "image": {
-                                                                    "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                                                                    "accessibilityText": "Image alternate text"
-                                                                }
-                                                            },{
-                                                                "optionInfo": {
-                                                                    "key": shortUrl,
-                                                                    "synonyms": [
-                                                                        "synonym of title 1",
-                                                                        "synonym of title 2",
-                                                                        "synonym of title 3"
-                                                                    ]
-                                                                },
-                                                                "title": "2",
-                                                                "description": data.title,
-                                                                "image": {
-                                                                    "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                                                                    "accessibilityText": "Image alternate text"
-                                                                }
-                                                            }]//carousels
+                                                            "items": carousels
                                                         }
                                                     }
                                                 }
                                             }
                                         }
                                     }
-                                } else {
-                                    console.log("Not Google Response");
-                                    returnJson = {
-                                        speech: speech,
-                                        displayText: speech
-                                    }
+                            } else {
+                                speech = speech + "" + os.EOL + "" + data.title + "! ";
+                                speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
+                                //speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
+                                returnJson = {
+                                    speech: speech,
+                                    displayText: speech
                                 }
+                            }
+                            if (count == 10) {
+                                console.log(" Speech : " + speech);
                                 console.log(" returnJson : " + JSON.stringify(returnJson));
-                                res.json(returnJson);
+                                res.json(returnJson)
                             }
                             count++;
                         })
