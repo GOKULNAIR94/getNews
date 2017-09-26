@@ -49,7 +49,7 @@ restService.post('/inputmsg', function(req, res) {
         var count = 1;
         var carousels1 = [];
         var carousels2 = [];
-        var suggests = [];
+
         
         googleNews.stream(track, function(stream) {
 
@@ -81,10 +81,7 @@ restService.post('/inputmsg', function(req, res) {
                             speech = speech + "" + os.EOL + "" + data.title + "! ";
                             speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
                             speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
-                        
-                        suggests.push({ "title" : "open " + shortUrl });
-                        
-                        
+    
                         carousels1.push({
                                         "shortUrl": shortUrl,
                                         "title": shortUrl,
@@ -124,15 +121,14 @@ restService.post('/inputmsg', function(req, res) {
                                                         "simpleResponse": {
                                                             "textToSpeech": "Following are the top 5 news from Google."
                                                         }
-                                                    }],
-                                                    "suggestions": suggests
+                                                    }]
                                                 },
                                                 "systemIntent": {
                                                     "intent": "actions.intent.OPTION",
                                                     "data": {
                                                         "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                                                         "carouselSelect": {
-                                                            "items": carousels
+                                                            "items": carousels2
                                                         }
                                                     }
                                                 }
