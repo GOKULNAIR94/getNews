@@ -113,7 +113,7 @@ restService.post('/inputmsg', function(req, res) {
                                                         "Assistant on the Google Home"
                                                     ]
                                                 },
-                                                "title": "open " + carousels1[i].shortUrl,
+                                                "title":  carousels1[i].shortUrl,
                                                 "description": carousels1[i].data.title + ".",
                                                 "image": {
                                                     "url": carousels1[i].image,
