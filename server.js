@@ -69,14 +69,14 @@ restService.post('/inputmsg', function(req, res) {
                     googl.shorten(newsurl)
                         .then(function(shortUrl) {
                             console.log("count  : " + count);
-                            console.log("data : " + JSON.stringify(data));
+                            console.log("data : " + JSON.stringify(data.image));
                             speech = speech + "" + os.EOL + "" + data.title + "! ";
                             speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
                             speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
                             
                             carousels.push({
                                 "optionInfo": {
-                                    "key": data.title,
+                                    "key": shortUrl,
                                     "synonyms": [
                                         "synonym of title 1",
                                         "synonym of title 2",
