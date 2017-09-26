@@ -77,12 +77,14 @@ restService.post('/inputmsg', function(req, res) {
                                 carousels.push({
                                     "optionInfo":
                                     {
-                                      "key": shortUrl,
+                                      "key":"googleAllo",
                                       "synonyms":
-                                      []
+                                      [
+                                        "Allo"
+                                      ]
                                     },
-                                    "title":"",
-                                    "description":"data.title",
+                                    "title":"Google Allo",
+                                    "description":"Introducing Google Allo, a smart messaging app that helps you say more and do more.",
                                     "image":
                                     {
                                       "url":"https://allo.google.com/images/allo-logo.png",
