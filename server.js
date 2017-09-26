@@ -94,7 +94,7 @@ restService.post('/inputmsg', function(req, res) {
                                     }
                                   };
                                 }
-                                console.log("carousels : " + JSON.stringify(carousels[count-1]));
+                                //console.log("carousels : " + JSON.stringify(carousels[count-1]));
                                 returnJson = {
                                   "speech":"Following are the top 5 news from Google.",
                                   "data": {
@@ -140,8 +140,8 @@ restService.post('/inputmsg', function(req, res) {
                                 }
                             }
                             if (count == 10) {
-                                console.log(" Speech : " + speech);
-                                //console.log(" returnJson : " + JSON.stringify(returnJson));
+                                //console.log(" Speech : " + speech);
+                                console.log(" returnJson : " + JSON.stringify(returnJson));
                                 res.json(returnJson)
                             }
                             count++;
