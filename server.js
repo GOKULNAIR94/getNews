@@ -30,8 +30,6 @@ restService.post('/inputmsg', function(req, res) {
         tracker = req.body.result.contexts[0].parameters.track;
     }
 
-
-
     console.log("intentName : " + intentName);
     console.log("tracker : " + tracker);
     var content;
