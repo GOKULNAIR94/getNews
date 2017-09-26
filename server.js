@@ -105,7 +105,7 @@ restService.post('/inputmsg', function(req, res) {
                                               {
                                                 "optionInfo":
                                                 {
-                                                  "key":"title",
+                                                  "key":"open https://goo.gl/ikwAUy",
                                                   "synonyms":
                                                   [
                                                     "synonym of title 1",
@@ -113,36 +113,36 @@ restService.post('/inputmsg', function(req, res) {
                                                     "synonym of title 3"
                                                   ]
                                                 },
-                                                "title":"Title of First List Item",
-                                                "description":"This is a description of a carousel item",
+                                                "title":"",
+                                                "description":"American Bank Center opens new branch at U-Mary - Bismarck Tribune!",
                                                 "image":
                                                 {
-                                                  "url":"https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
-                                                  "accessibilityText":"Image alternate text"
+                                                  "url":"",
+                                                  "accessibilityText":""
                                                 }
                                               },
                                               {
                                                 "optionInfo":
                                                 {
-                                                  "key":"googleHome",
+                                                  "key":"open https://goo.gl/5ujWCm",
                                                   "synonyms":
                                                   [
                                                     "Google Home Assistant",
                                                     "Assistant on the Google Home"
                                                   ]
                                                 },
-                                                "title":"Google Home",
-                                                "description":"Google Home is a voice-activated speaker powered by the Google Assistant.",
+                                                "title":"",
+                                                "description":" Illinois' First American Bank Corp. acquiring Kenosha's Southport Bank - Milwaukee Journal Sentinel! ",
                                                 "image":
                                                 {
-                                                  "url":"https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
-                                                  "accessibilityText":"Google Home"
+                                                  "url":"",
+                                                  "accessibilityText":""
                                                 }
                                               },
                                               {
                                                 "optionInfo":
                                                 {
-                                                  "key":"googlePixel",
+                                                  "key":"open https://goo.gl/aWS3tG",
                                                   "synonyms":
                                                   [
                                                     "Google Pixel XL",
@@ -150,29 +150,29 @@ restService.post('/inputmsg', function(req, res) {
                                                     "Pixel XL"
                                                   ]
                                                 },
-                                                "title":"Google Pixel",
-                                                "description":"Pixel. Phone by Google.",
+                                                "title":"",
+                                                "description":"Branch transformation is a 'journey' at Bank of the West - American Banker ",
                                                 "image":
                                                 {
-                                                  "url":"https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
-                                                  "accessibilityText":"Google Pixel"
+                                                  "url":"",
+                                                  "accessibilityText":""
                                                 }
                                               },
                                               {
                                                 "optionInfo":
                                                 {
-                                                  "key":"googleAllo",
+                                                  "key":"open https://goo.gl/uEnVca",
                                                   "synonyms":
                                                   [
                                                     "Allo"
                                                   ]
                                                 },
                                                 "title":"Google Allo",
-                                                "description":"Introducing Google Allo, a smart messaging app that helps you say more and do more.",
+                                                "description":"Stock in Focus: Checking the Numbers for American Bank Inc (AMBK) - Piedmont Register! ",
                                                 "image":
                                                 {
-                                                  "url":"https://allo.google.com/images/allo-logo.png",
-                                                  "accessibilityText":"Google Allo Logo"
+                                                  "url":"",
+                                                  "accessibilityText":""
                                                 }
                                               }
                                             ]
