@@ -69,7 +69,7 @@ restService.post('/inputmsg', function(req, res) {
                     googl.shorten(newsurl)
                         .then(function(shortUrl) {
                             console.log("count  : " + count);
-                        console.log("Image : " + JSON.stringify(data));
+                        //console.log("Image : " + JSON.stringify(data));
 
                             console.log("Google Response:");
                             speech = speech + "" + os.EOL + "" + data.title + "! ";
