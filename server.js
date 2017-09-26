@@ -113,7 +113,37 @@ restService.post('/inputmsg', function(req, res) {
                                                     "data": {
                                                         "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                                                         "carouselSelect": {
-                                                            "items": carousels
+                                                            "items": [{
+                                                                "optionInfo": {
+                                                                    "key": shortUrl,
+                                                                    "synonyms": [
+                                                                        "synonym of title 1",
+                                                                        "synonym of title 2",
+                                                                        "synonym of title 3"
+                                                                    ]
+                                                                },
+                                                                "title": "1",
+                                                                "description": data.title,
+                                                                "image": {
+                                                                    "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                                                                    "accessibilityText": "Image alternate text"
+                                                                }
+                                                            },{
+                                                                "optionInfo": {
+                                                                    "key": shortUrl,
+                                                                    "synonyms": [
+                                                                        "synonym of title 1",
+                                                                        "synonym of title 2",
+                                                                        "synonym of title 3"
+                                                                    ]
+                                                                },
+                                                                "title": "2",
+                                                                "description": data.title,
+                                                                "image": {
+                                                                    "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
+                                                                    "accessibilityText": "Image alternate text"
+                                                                }
+                                                            }]//carousels
                                                         }
                                                     }
                                                 }
