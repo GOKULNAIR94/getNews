@@ -105,7 +105,7 @@ restService.post('/inputmsg', function(req, res) {
                                               {
                                                 "optionInfo":
                                                 {
-                                                  "key":"open https://goo.gl/ikwAUy",
+                                                  "key":"title",
                                                   "synonyms":
                                                   [
                                                     "synonym of title 1",
@@ -113,26 +113,26 @@ restService.post('/inputmsg', function(req, res) {
                                                     "synonym of title 3"
                                                   ]
                                                 },
-                                                "title":"American Bank",
-                                                "description":"American Bank Center opens new branch at U-Mary - Bismarck Tribune!",
+                                                "title":"Title of First List Item",
+                                                "description":"This is a description of a carousel item",
                                                 "image":
                                                 {
-                                                  "url":"https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                                                  "url":"https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                                                   "accessibilityText":"Image alternate text"
                                                 }
                                               },
                                               {
                                                 "optionInfo":
                                                 {
-                                                  "key":"open https://goo.gl/5ujWCm",
+                                                  "key":"googleHome",
                                                   "synonyms":
                                                   [
                                                     "Google Home Assistant",
                                                     "Assistant on the Google Home"
                                                   ]
                                                 },
-                                                "title":"American Bank",
-                                                "description":" Illinois' First American Bank Corp. acquiring Kenosha's Southport Bank - Milwaukee Journal Sentinel! ",
+                                                "title":"Google Home",
+                                                "description":"Google Home is a voice-activated speaker powered by the Google Assistant.",
                                                 "image":
                                                 {
                                                   "url":"https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
@@ -142,7 +142,7 @@ restService.post('/inputmsg', function(req, res) {
                                               {
                                                 "optionInfo":
                                                 {
-                                                  "key":"open https://goo.gl/aWS3tG",
+                                                  "key":"googlePixel",
                                                   "synonyms":
                                                   [
                                                     "Google Pixel XL",
@@ -150,8 +150,8 @@ restService.post('/inputmsg', function(req, res) {
                                                     "Pixel XL"
                                                   ]
                                                 },
-                                                "title":"American Bank",
-                                                "description":"Branch transformation is a 'journey' at Bank of the West - American Banker ",
+                                                "title":"Google Pixel",
+                                                "description":"Pixel. Phone by Google.",
                                                 "image":
                                                 {
                                                   "url":"https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
@@ -161,14 +161,14 @@ restService.post('/inputmsg', function(req, res) {
                                               {
                                                 "optionInfo":
                                                 {
-                                                  "key":"open https://goo.gl/uEnVca",
+                                                  "key":"googleAllo",
                                                   "synonyms":
                                                   [
                                                     "Allo"
                                                   ]
                                                 },
-                                                "title":"American Bank",
-                                                "description":"Stock in Focus: Checking the Numbers for American Bank Inc (AMBK) - Piedmont Register! ",
+                                                "title":"Google Allo",
+                                                "description":"Introducing Google Allo, a smart messaging app that helps you say more and do more.",
                                                 "image":
                                                 {
                                                   "url":"https://allo.google.com/images/allo-logo.png",
