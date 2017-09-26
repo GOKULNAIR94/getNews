@@ -90,7 +90,7 @@ restService.post('/inputmsg', function(req, res) {
                                                         }
                                                     },
                                                     {
-                                                        "simpleSelect": {
+                                                        "carouselSelect": {
                                                     "items": [{
                                                             "optionInfo": {
                                                                 "key": "MATH_AND_PRIME",
@@ -151,9 +151,9 @@ restService.post('/inputmsg', function(req, res) {
                             } else {
                                 speech = speech + "" + os.EOL + "" + data.title + "! ";
                                 speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
-                                speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
+                                //speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
                                 returnJson = {
-                                    speech: speechVoice,
+                                    speech: speech,
                                     displayText: speech
                                 }
                             }
