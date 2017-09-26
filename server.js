@@ -84,22 +84,22 @@ restService.post('/inputmsg', function(req, res) {
                         suggests.push({ "title" : "open " + shortUrl });
                         
                         
-                        carousels.push({
-                                        "optionInfo": {
-                                            "key": "open " + shortUrl,
-                                            "synonyms": [
-                                                "Google Home Assistant",
-                                                "Assistant on the Google Home"
-                                            ]
-                                        },
-                                        "title": "open",
-                                        "description": data.title + ".",
-                                        "image": {
-                                            "url": image,
-                                            "accessibilityText": ""
-                                        }
-                                    });
-                        
+//                        carousels.push({
+//                                        "optionInfo": {
+//                                            "key": "open " + shortUrl,
+//                                            "synonyms": [
+//                                                "Google Home Assistant",
+//                                                "Assistant on the Google Home"
+//                                            ]
+//                                        },
+//                                        "title": "open",
+//                                        "description": data.title + ".",
+//                                        "image": {
+//                                            "url": image,
+//                                            "accessibilityText": ""
+//                                        }
+//                                    });
+//                        
 
                             if (count == 10) {
                                 carousels.push({
