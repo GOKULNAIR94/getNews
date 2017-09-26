@@ -76,15 +76,15 @@ restService.post('/inputmsg', function(req, res) {
                             
                             carousels.push({
                                 "optionInfo": {
-                                    "key": "title",
+                                    "key": data.title,
                                     "synonyms": [
                                         "synonym of title 1",
                                         "synonym of title 2",
                                         "synonym of title 3"
                                     ]
                                 },
-                                "title": "Title of First List Item",
-                                "description": "This is a description of a carousel item",
+                                "title": "",
+                                "description": data.title,
                                 "image": {
                                     "url": "https://developers.google.com/actions/images/badges/XPM_BADGING_GoogleAssistant_VER.png",
                                     "accessibilityText": "Image alternate text"
