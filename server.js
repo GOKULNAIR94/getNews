@@ -45,6 +45,7 @@ restService.post('/inputmsg', function(req, res) {
         track = tracker;
         
         var news = "";
+        var image = "";
         var count = 1;
         var carousels = [];
         var suggests = [];
@@ -69,8 +70,12 @@ restService.post('/inputmsg', function(req, res) {
                     googl.shorten(newsurl)
                         .then(function(shortUrl) {
                             console.log("count  : " + count);
-                        //console.log("Image : " + JSON.stringify(data));
-
+                        //console.log("Image : " + JSON.stringify(data.meta.image.url));
+                        if( data.image.url != null && data.image.url != "" ){
+                           image = data.image.url;
+                           }else{
+                               image = data.meta.image.url;
+                           }
                             console.log("Google Response:");
                             speech = speech + "" + os.EOL + "" + data.title + "! ";
                             speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
@@ -90,7 +95,7 @@ restService.post('/inputmsg', function(req, res) {
                                         "title": "open",
                                         "description": data.title + ".",
                                         "image": {
-                                            "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                                            "url": image,
                                             "accessibilityText": ""
                                         }
                                     });
@@ -108,7 +113,7 @@ restService.post('/inputmsg', function(req, res) {
                                                 "title": "open",
                                                 "description": data.title + ".",
                                                 "image": {
-                                                    "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                                                    "url": image,
                                                     "accessibilityText": ""
                                                 }
                                             });
