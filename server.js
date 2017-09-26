@@ -107,13 +107,13 @@ restService.post('/inputmsg', function(req, res) {
                                     
                                 carousels2.push({
                                                 "optionInfo": {
-                                                    "key": "open " + carousels1[i].shortUrl,
+                                                    "key": "Please open " + carousels1[i].shortUrl,
                                                     "synonyms": [
                                                         "Google Home Assistant",
                                                         "Assistant on the Google Home"
                                                     ]
                                                 },
-                                                "title": "open",
+                                                "title": "open " + carousels1[i].shortUrl,
                                                 "description": carousels1[i].data.title + ".",
                                                 "image": {
                                                     "url": carousels1[i].image,
