@@ -81,20 +81,7 @@ restService.post('/inputmsg', function(req, res) {
                         
 
                             if (count == 10) {
-                                carousels.push({
-                                    "optionInfo": {
-                                        "key": "googlePixel",
-                                        "synonyms": [
-                                            "googlePixel"
-                                        ]
-                                    },
-                                    "title": "American Bank",
-                                    "description": "googlePixel.",
-                                    "image": {
-                                        "url": "https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
-                                        "accessibilityText": "Google Pixel"
-                                    }
-                                });
+                                carousels.push();
                                 if (req.body.originalRequest.source == "google") {
                                     returnJson = {
                                         "speech": "Following are the top 5 news from Google.",
@@ -114,7 +101,20 @@ restService.post('/inputmsg', function(req, res) {
                                                     "data": {
                                                         "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                                                         "carouselSelect": {
-                                                            "items": carousels
+                                                            "items": [{
+                                                                "optionInfo": {
+                                                                    "key": "googlePixel",
+                                                                    "synonyms": [
+                                                                        "googlePixel"
+                                                                    ]
+                                                                },
+                                                                "title": "American Bank",
+                                                                "description": "googlePixel.",
+                                                                "image": {
+                                                                    "url": "https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
+                                                                    "accessibilityText": "Google Pixel"
+                                                                }
+                                                            }]
                                                         }
                                                     }
                                                 }
