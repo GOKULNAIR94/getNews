@@ -79,7 +79,7 @@ restService.post('/inputmsg', function(req, res) {
                                     carousels[count-1] = {
                                     "optionInfo":
                                     {
-                                      "key":"googleAllo",
+                                      "key":"googleAllo" + count,
                                       "synonyms":
                                       [
                                         "Allo"
