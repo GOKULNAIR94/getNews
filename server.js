@@ -94,7 +94,7 @@ restService.post('/inputmsg', function(req, res) {
                                     }
                                   };
                                 }
-                                console.log("carousels : " + carousels);
+                                console.log("carousels : " + JSON.stringify(carousels[count-1]));
                                 returnJson = {
                                   "speech":"Following are the top 5 news from Google.",
                                   "data": {
