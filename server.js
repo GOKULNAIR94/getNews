@@ -69,7 +69,7 @@ restService.post('/inputmsg', function(req, res) {
                     googl.shorten(newsurl)
                         .then(function(shortUrl) {
                             console.log("count  : " + count);
-                        console.log("Image : " + JSON.stringify(data.image));
+                        console.log("Image : " + JSON.stringify(data));
 
                             console.log("Google Response:");
                             speech = speech + "" + os.EOL + "" + data.title + "! ";
@@ -79,6 +79,21 @@ restService.post('/inputmsg', function(req, res) {
                         suggests.push({ "title" : "open " + shortUrl });
                         
                         
+                        carousels.push({
+                                        "optionInfo": {
+                                            "key": "open " + shortUrl,
+                                            "synonyms": [
+                                                "Google Home Assistant",
+                                                "Assistant on the Google Home"
+                                            ]
+                                        },
+                                        "title": "open",
+                                        "description": data.title + ".",
+                                        "image": {
+                                            "url": "https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                                            "accessibilityText": ""
+                                        }
+                                    });
                         
 
                             if (count == 10) {
