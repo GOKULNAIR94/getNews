@@ -70,6 +70,7 @@ restService.post('/inputmsg', function(req, res) {
                         .then(function(shortUrl) {
                             console.log("count  : " + count);
                             console.log("data : " + JSON.stringify(data.image));
+                            console.log("data : " + JSON.stringify(data.image));
                             speech = speech + "" + os.EOL + "" + data.title + "! ";
                             speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
                             speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
@@ -130,7 +131,7 @@ restService.post('/inputmsg', function(req, res) {
                                     }
                                 }
                                 console.log(" returnJson : " + JSON.stringify(returnJson));
-                                res.json(returnJson)
+                                res.json(returnJson);
                             }
                             count++;
                         })
