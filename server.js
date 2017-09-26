@@ -69,6 +69,7 @@ restService.post('/inputmsg', function(req, res) {
                     googl.shorten(newsurl)
                         .then(function(shortUrl) {
                             console.log("count  : " + count);
+                        console.log("Image : " + JSON.stringify(data.image));
 
                             console.log("Google Response:");
                             speech = speech + "" + os.EOL + "" + data.title + "! ";
@@ -103,7 +104,7 @@ restService.post('/inputmsg', function(req, res) {
                                                         "carouselSelect": {
                                                             "items": [{
                                                                     "optionInfo": {
-                                                                        "key": "test1",
+                                                                        "key": "open " + shortUrl,
                                                                         "synonyms": [
                                                                             "Google Home Assistant",
                                                                             "Assistant on the Google Home"
