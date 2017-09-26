@@ -113,12 +113,12 @@ restService.post('/inputmsg', function(req, res) {
                                                     "synonym of title 3"
                                                   ]
                                                 },
-                                                "title":"American Bank",
+                                                "title":"",
                                                 "description":"American Bank Center opens new branch at U-Mary - Bismarck Tribune!",
                                                 "image":
                                                 {
                                                   "url":"",
-                                                  "accessibilityText":""
+                                                  "accessibilityText":"Image alternate text"
                                                 }
                                               },
                                               {
@@ -131,12 +131,12 @@ restService.post('/inputmsg', function(req, res) {
                                                     "Assistant on the Google Home"
                                                   ]
                                                 },
-                                                "title":"American Bank",
+                                                "title":"",
                                                 "description":" Illinois' First American Bank Corp. acquiring Kenosha's Southport Bank - Milwaukee Journal Sentinel! ",
                                                 "image":
                                                 {
-                                                  "url":"",
-                                                  "accessibilityText":""
+                                                  "url":"https://lh3.googleusercontent.com/Nu3a6F80WfixUqf_ec_vgXy_c0-0r4VLJRXjVFF_X_CIilEu8B9fT35qyTEj_PEsKw",
+                                                  "accessibilityText":"Google Home"
                                                 }
                                               },
                                               {
@@ -150,12 +150,12 @@ restService.post('/inputmsg', function(req, res) {
                                                     "Pixel XL"
                                                   ]
                                                 },
-                                                "title":"American Bank",
+                                                "title":"",
                                                 "description":"Branch transformation is a 'journey' at Bank of the West - American Banker ",
                                                 "image":
                                                 {
-                                                  "url":"",
-                                                  "accessibilityText":""
+                                                  "url":"https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
+                                                  "accessibilityText":"Google Pixel"
                                                 }
                                               },
                                               {
@@ -167,12 +167,12 @@ restService.post('/inputmsg', function(req, res) {
                                                     "Allo"
                                                   ]
                                                 },
-                                                "title":"American Bank",
+                                                "title":"Google Allo",
                                                 "description":"Stock in Focus: Checking the Numbers for American Bank Inc (AMBK) - Piedmont Register! ",
                                                 "image":
                                                 {
-                                                  "url":"",
-                                                  "accessibilityText":""
+                                                  "url":"https://allo.google.com/images/allo-logo.png",
+                                                  "accessibilityText":"Google Allo Logo"
                                                 }
                                               }
                                             ]
