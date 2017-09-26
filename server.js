@@ -48,6 +48,7 @@ restService.post('/inputmsg', function(req, res) {
         var speech = "";
         var news = "";
         var count = 1;
+        var carousels = [];
         googleNews.stream(track, function(stream) {
 
 
@@ -134,7 +135,7 @@ restService.post('/inputmsg', function(req, res) {
                                     displayText: speech
                                 }
                             }
-                            if (count == 10) {
+                            if (count == 5) {
                                 console.log(" Speech : " + speech);
                                 console.log(" returnJson : " + JSON.stringify(returnJson));
                                 res.json(returnJson)
