@@ -75,20 +75,19 @@ restService.post('/inputmsg', function(req, res) {
                             speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
                             speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
                         
-                        suggests.push({ "title" : shortUrl });
+                        suggests.push({ "title" : "open " + shortUrl });
                         
                         carousels.push({
                             "optionInfo": {
-                                "key": "open " + shortUrl,
+                                "key": "googlePixel",
                                 "synonyms": [
-                                    "shortUrl",
-                                    "shortUrl"
+                                    "googlePixel"
                                 ]
                             },
                             "title": "American Bank",
-                            "description": data.title + ".",
+                            "description": "googlePixel.",
                             "image": {
-                                "url": "",
+                                "url": "https://storage.googleapis.com/madebygoog/v1/Pixel/Pixel_ColorPicker/Pixel_Device_Angled_Black-720w.png",
                                 "accessibilityText": "Google Pixel"
                             }
                         });
@@ -108,17 +107,16 @@ restService.post('/inputmsg', function(req, res) {
                                                         }
                                                     }],
                                                     "suggestions": suggests
+                                                },
+                                                "systemIntent": {
+                                                    "intent": "actions.intent.OPTION",
+                                                    "data": {
+                                                        "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                                                        "carouselSelect": {
+                                                            "items": carousels
+                                                        }
+                                                    }
                                                 }
-//                                                ,
-//                                                "systemIntent": {
-//                                                    "intent": "actions.intent.OPTION",
-//                                                    "data": {
-//                                                        "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-//                                                        "carouselSelect": {
-//                                                            "items": carousels
-//                                                        }
-//                                                    }
-//                                                }
                                             }
                                         }
                                     };
