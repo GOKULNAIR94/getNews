@@ -74,7 +74,6 @@ restService.post('/inputmsg', function(req, res) {
                                 speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
                                 
                                 speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
-                                
                                 returnJson = {
                                     speech: speechVoice,
                                     displayText: speech,
@@ -90,7 +89,7 @@ restService.post('/inputmsg', function(req, res) {
                                                             'displayText': speech
                                                         }
                                                     },
-                                                    
+                                                    {
                                                         "carouselSelect": {
                                                     "items": [{
                                                             "optionInfo": {
@@ -143,7 +142,7 @@ restService.post('/inputmsg', function(req, res) {
                                                         }
                                                     ]
                                                 }
-                                                    
+                                                    }
                                                 ]
                                             }
                                         }
