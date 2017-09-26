@@ -93,7 +93,7 @@ restService.post('/inputmsg', function(req, res) {
                     
                             if (count == 5) {
                                 if (req.body.originalRequest.source == "google") {
-                                    console.log("Google Response:");
+                                    console.log("Google Response");
                                     returnJson = {
                                         speech: speech,
                                         displayText: speech,
@@ -121,9 +121,7 @@ restService.post('/inputmsg', function(req, res) {
                                         }
                                     }
                                 } else {
-                                    speech = speech + "" + os.EOL + "" + data.title + "! ";
-                                    speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
-                                    //speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
+                                    console.log("Not Google Response");
                                     returnJson = {
                                         speech: speech,
                                         displayText: speech
