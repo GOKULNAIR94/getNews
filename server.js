@@ -37,157 +37,78 @@ restService.post('/inputmsg', function(req, res) {
     var speechVoice = "";
     var returnJson;
     try {
-        var GoogleNews, googleNews, track;
 
-        GoogleNews = require('google-news');
-        googleNews = new GoogleNews();
+        var carousels = [];
 
-        track = tracker;
-        
-        var news = "";
-        var image = "";
-        var count = 1;
-        var carousels1 = [];
-        var carousels2 = [];
+        var gNews = "";
+        const GoogleNewsRss = require('google-news-rss');
 
-        
-        googleNews.stream(track, function(stream) {
-            
-            var gNews = "";
-            const GoogleNewsRss = require('google-news-rss');
- 
-            const googleNews = new GoogleNewsRss();
+        const googleNews = new GoogleNewsRss();
 
-            googleNews
-               .search('Steve Jobs', 5, "en")
-               .then(resp => {
-                
+        googleNews
+            .search(track, 10, "en")
+            .then(resp => {
+
                 console.log("resp : " + resp);
-                gNews = resp;
-                console.log("gNews : " +  JSON.stringify(gNews) )
-            });
-
-
-            stream.on(GoogleNews.DATA, function(data) {
-                //console.log('Stringify ' + JSON.stringify(data));
-                //console.log('Data Event received... ' + data.link);
-                //callback( data.title );
-                if (data.link != null && data.link != NaN) {
-
-                    var newsurl = data.link;
-                    //tera code
-                    var googl = require('goo.gl');
-
-                    googl.setKey('AIzaSyD75VTq7NYjo6nvRgF354QomarX14NWTbY');
-
-                    googl.getKey();
-
-                    googl.shorten(newsurl)
-                        .then(function(shortUrl) {
-                            console.log("count  : " + count);
-                        //console.log("Image : " + JSON.stringify(data.meta.image.url));
-                        if( data.image.url != null && data.image.url != "" ){
-                           image = data.image.url;
-                           }else{
-                               image = data.meta.image.url;
-                           }
-                            console.log("Google Response:");
-                            speech = speech + "" + os.EOL + "" + data.title + "! ";
-                            speechVoice = speechVoice + "" + os.EOL + "" + data.title + "!.. ";
-                            speech = speech + "\n More @ : " + shortUrl + "!" + os.EOL;
-    
-                        carousels1.push({
-                                        "shortUrl": shortUrl,
-                                        "title": shortUrl,
-                                        "description": data.title + ".",
-                                        "image": image
-                                    });
-                        
-
-                            if (count == 10) {
-                                for( var i=0; i<10; i++){
-                                    
-                                carousels2.push({
-                                                "optionInfo": {
-                                                    "key": "Please open " + carousels1[i].shortUrl,
-                                                    "synonyms": [
-                                                        "Google Home Assistant",
-                                                        "Assistant on the Google Home"
-                                                    ]
-                                                },
-                                                "title":  carousels1[i].title,
-                                                "description": carousels1[i].description,
-                                                "image": {
-                                                    "url": carousels1[i].image,
-                                                    "accessibilityText": ""
-                                                }
-                                            });
-                                }
-                                
-                                if (req.body.originalRequest.source == "google") {
-                                    returnJson = {
-                                        "speech": "Following are the top 5 news from Google.",
-                                        "data": {
-                                            "google": {
-                                                "expectUserResponse": true,
-                                                "richResponse": {
-                                                    "items": [{
-                                                        "simpleResponse": {
-                                                            "textToSpeech": "Following are the top 5 news from Google."
-                                                        }
-                                                    }]
-                                                },
-                                                "systemIntent": {
-                                                    "intent": "actions.intent.OPTION",
-                                                    "data": {
-                                                        "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                                                        "carouselSelect": {
-                                                            "items": carousels2
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    };
-                                } else {
-                                    returnJson = {
-                                        speech: speech,
-                                        displayText: speech
-                                    };
-                                }
-                                //console.log(" Speech : " + speech);
-                                console.log(" returnJson : " + JSON.stringify(returnJson));
-                                res.json(returnJson);
-                            } else {
-                                count++;
-                            }
-
-                        })
-                        .catch(function(err) {
-                            console.error(err.message);
-                        });
-                } else {
-                    speech = speech + "" + os.EOL + "" + data.title + "! ";
-                    if (count == 10) {
-                        if (req.body.intentName != null)
-                            res.json(speech);
-                        else {
-                            return res.json({
-                                speech: speech,
-                                displayText: speech
-                            })
-                        }
-                    }
-                    count++;
+                if( resp.thumbnailUrl == null || resp.thumbnailUrl == "" ){
+                    resp.thumbnailUrl = "https://vignette4.wikia.nocookie.net/logopedia/images/d/d1/Google_News_icon_2015.png/revision/latest?cb=20150901190817";
                 }
 
+                for (var i = 0; i < 10; i++) {
+
+                    carousels.push({
+                        "optionInfo": {
+                            "key": resp[i].title,
+                            "synonyms": [
+                                "Google Home Assistant",
+                                "Assistant on the Google Home"
+                            ]
+                        },
+                        "title": resp[i].title,
+                        "description": carousels[i].description,
+                        "image": {
+                            "url": resp[i].thumbnailUrl,
+                            "accessibilityText": ""
+                        }
+                    });
+                }
+
+                if (req.body.originalRequest.source == "google") {
+                    returnJson = {
+                        "speech": "Following are the top 5 news from Google.",
+                        "data": {
+                            "google": {
+                                "expectUserResponse": true,
+                                "richResponse": {
+                                    "items": [{
+                                        "simpleResponse": {
+                                            "textToSpeech": "Following are the top 5 news from Google."
+                                        }
+                                    }]
+                                },
+                                "systemIntent": {
+                                    "intent": "actions.intent.OPTION",
+                                    "data": {
+                                        "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                                        "carouselSelect": {
+                                            "items": carousels
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    };
+                } else {
+                    returnJson = {
+                        speech: speech,
+                        displayText: speech
+                    };
+                }
+                console.log(" returnJson : " + JSON.stringify(returnJson));
+                res.json(returnJson);
+
             });
 
-            stream.on(GoogleNews.ERROR, function(error) {
-                console.log('Error Event received... ' + error);
-            });
-
-        });
     } catch (e) {
         console.log("Error : " + e);
     }
