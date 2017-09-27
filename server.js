@@ -51,9 +51,20 @@ restService.post('/inputmsg', function(req, res) {
             .then(resp => {
 
                 console.log("resp : " + resp);
+            
+            
                 
 
                 for (var i = 0; i < resp.length; i++) {
+                    
+                    if( resp[i].thumbnailUrl == null || resp[i].thumbnailUrl == "" ){
+                        resp[i].thumbnailUrl = "https://vignette4.wikia.nocookie.net/logopedia/images/d/d1/Google_News_icon_2015.png/revision/latest?cb=20150901190817";
+                    }else{
+                        resp[i].thumbnailUrl = "http:" + resp[i].thumbnailUrl;
+                        
+                    }
+                    
+                    
                     if( intentName == "Activities - Sales - custom - news - custom"){
                         var headLine = req.body.headline;
                         console.log("HeadLine : " + headLine );
@@ -64,6 +75,12 @@ restService.post('/inputmsg', function(req, res) {
                             basicCard["image"] = resp[i].thumbnailUrl;
                             basicCard["description"] = resp[i].description;
                             basicCard["url"] = resp[i].link;
+                        }
+                        else{
+                            res.json({
+                                speech: "Something went wrong! Please try again later!",
+                                displayText: "Something went wrong! Please try again later!"
+                            });
                         }
                     }else{
                         carousels.push({
@@ -83,12 +100,7 @@ restService.post('/inputmsg', function(req, res) {
                         });
                     }
                     
-                    if( resp[i].thumbnailUrl == null || resp[i].thumbnailUrl == "" ){
-                        resp[i].thumbnailUrl = "https://vignette4.wikia.nocookie.net/logopedia/images/d/d1/Google_News_icon_2015.png/revision/latest?cb=20150901190817";
-                    }else{
-                        resp[i].thumbnailUrl = "http:" + resp[i].thumbnailUrl;
-                        
-                    }
+                    
 
                     
                 }
