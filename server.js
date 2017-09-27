@@ -73,7 +73,7 @@ restService.post('/inputmsg', function(req, res) {
                         
                         
                         
-                        console.log( "flag :" + resp[i].title.indexOf(headLine.substring(1, 10)) );
+                        console.log( "flag :" + resp[i]["title"].indexOf(headLine.substring(1, 10)) == 0 );
                         if( resp[i]["title"].indexOf(headLine.substring(1, 10)) == 0  ){
                             basicCard["title"] = resp[i].title;
                             basicCard["image"] = resp[i].thumbnailUrl;
