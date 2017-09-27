@@ -53,14 +53,15 @@ restService.post('/inputmsg', function(req, res) {
         
         googleNews.stream(track, function(stream) {
             
-            
+            var gNews = "";
             const GoogleNewsRss = require('google-news-rss');
  
             const googleNews = new GoogleNewsRss();
 
             googleNews
                .search('Steve Jobs', 5, "en")
-               .then(resp => console.log(resp));
+               .then(resp => gNews = resp);
+            console.log( "gNews : " + gNews );
 
 
             stream.on(GoogleNews.DATA, function(data) {
