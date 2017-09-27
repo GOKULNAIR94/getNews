@@ -60,8 +60,12 @@ restService.post('/inputmsg', function(req, res) {
 
             googleNews
                .search('Steve Jobs', 5, "en")
-               .then(resp => gNews = resp);
-            console.log( "gNews : " + gNews );
+               .then(resp => {
+                
+                console.log("resp : " + resp);
+                gNews = resp;
+                console.log("gNews : " +  gNews)
+            });
 
 
             stream.on(GoogleNews.DATA, function(data) {
