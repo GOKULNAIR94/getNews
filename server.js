@@ -73,17 +73,16 @@ restService.post('/inputmsg', function(req, res) {
                         
                         
                         
-                        
-                        if( resp[i].title.indexOf(headLine.substring(1, 15)) == 0  ){
+                        console.log( "flag :" + resp[i].title.indexOf(headLine.substring(1, 10)) );
+                        if( resp[i]["title"].indexOf(headLine.substring(1, 10)) == 0  ){
                             basicCard["title"] = resp[i].title;
                             basicCard["image"] = resp[i].thumbnailUrl;
                             basicCard["description"] = resp[i].description;
                             basicCard["url"] = resp[i].link;
-
-                            console.log( "resp[i].title :" + resp[i].title );
-                            break;
+                            console.log( "basicCard :" + JSON.stringify(basicCard) );
+                            
                         }
-                        console.log( "flag :" + resp[i].title.indexOf(headLine.substring(1, 10)) );
+                        
                     }else{
                         carousels.push({
                             "optionInfo": {
