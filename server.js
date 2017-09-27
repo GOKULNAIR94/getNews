@@ -64,7 +64,7 @@ restService.post('/inputmsg', function(req, res) {
                 
                 console.log("resp : " + resp);
                 gNews = resp;
-                console.log("gNews : " +  gNews)
+                console.log("gNews : " +  JSON.stringify(gNews) )
             });
 
 
