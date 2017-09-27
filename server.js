@@ -69,7 +69,7 @@ restService.post('/inputmsg', function(req, res) {
                                 "Assistant on the Google Home"
                             ]
                         },
-                        "title": resp[i].title + "..more..",
+                        "title": resp[i].title + ".. More details..",
                         "description": resp[i].description,
                         "image": {
                             "url": resp[i].thumbnailUrl,
