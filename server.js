@@ -50,11 +50,13 @@ restService.post('/inputmsg', function(req, res) {
             .then(resp => {
 
                 console.log("resp : " + resp);
-                if( resp.thumbnailUrl == null || resp.thumbnailUrl == "" ){
-                    resp.thumbnailUrl = "https://vignette4.wikia.nocookie.net/logopedia/images/d/d1/Google_News_icon_2015.png/revision/latest?cb=20150901190817";
-                }
+                
 
-                for (var i = 0; i < 10; i++) {
+                for (var i = 0; i < resp.length; i++) {
+                    
+                    if( resp.thumbnailUrl[i] == null || resp.thumbnailUrl[i] == "" ){
+                        resp.thumbnailUrl[i] = "https://vignette4.wikia.nocookie.net/logopedia/images/d/d1/Google_News_icon_2015.png/revision/latest?cb=20150901190817";
+                    }
 
                     carousels.push({
                         "optionInfo": {
@@ -68,7 +70,7 @@ restService.post('/inputmsg', function(req, res) {
                         "description": carousels[i].description,
                         "image": {
                             "url": resp[i].thumbnailUrl,
-                            "accessibilityText": ""
+                            "accessibilityText": "resp[i].title"
                         }
                     });
                 }
