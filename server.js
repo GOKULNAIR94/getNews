@@ -52,7 +52,7 @@ restService.post('/inputmsg', function(req, res) {
             .search( tracker, 10, "en")
             .then(resp => {
 
-                console.log("resp : " + resp);
+                console.log("resp : " + JSON.stringify(resp));
             
             
                 
@@ -79,7 +79,7 @@ restService.post('/inputmsg', function(req, res) {
                             basicCard["title"] = resp[i].title;
                             basicCard["image"] = resp[i].thumbnailUrl;
                             basicCard["description"] = resp[i].description;
-                            basicCard["url"] = resp[i].link;
+                            basicCard["url"] = resp[i].shortUrl;
                             console.log( "basicCard :" + JSON.stringify(basicCard) );
                             
                         }
