@@ -67,7 +67,7 @@ restService.post('/inputmsg', function(req, res) {
                             ]
                         },
                         "title": resp[i].title,
-                        "description": carousels[i].description,
+                        "description": resp[i].description,
                         "image": {
                             "url": resp[i].thumbnailUrl,
                             "accessibilityText": "resp[i].title"
