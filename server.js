@@ -59,7 +59,7 @@ restService.post('/inputmsg', function(req, res) {
             const googleNews = new GoogleNewsRss();
 
             googleNews
-               .search('Steve Jobs')
+               .search('Steve Jobs',10,en)
                .then(resp => console.log(resp));
 
 
