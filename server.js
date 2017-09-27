@@ -57,6 +57,8 @@ restService.post('/inputmsg', function(req, res) {
                     if( intentName == "Activities - Sales - custom - news - custom"){
                         var headLine = req.body.headline;
                         console.log("HeadLine : " + headLine );
+                        console.log( "resp[i].title :" + resp[i].title );
+                        console.log( "flag :" + resp[i].title.indexOf(headLine.substring(1, 10)) );
                         if( resp[i].title.indexOf(headLine.substring(1, 10)) == 0  ){
                             basicCard["title"] = resp[i].title;
                             basicCard["image"] = resp[i].thumbnailUrl;
