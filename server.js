@@ -39,6 +39,7 @@ restService.post('/inputmsg', function(req, res) {
     try {
 
         var carousels = [];
+        var basicCard;
 
         var gNews = "";
         const GoogleNewsRss = require('google-news-rss');
@@ -53,6 +54,16 @@ restService.post('/inputmsg', function(req, res) {
                 
 
                 for (var i = 0; i < resp.length; i++) {
+                    if( intentName == "Activities - Sales - custom - news - custom"){
+                        var headLine = req.body.headLine;
+                        console.log("HeadLine : " + headLine );
+                        if( resp[i].title == headLine ){
+                            basicCard["title"] = resp[i].title;
+                            basicCard["image"] = resp[i].thumbnailUrl;
+                            basicCard["description"] = resp[i].description;
+                            basicCard["url"] = resp[i].link;
+                        }
+                    }
                     
                     if( resp[i].thumbnailUrl == null || resp[i].thumbnailUrl == "" ){
                         resp[i].thumbnailUrl = "https://vignette4.wikia.nocookie.net/logopedia/images/d/d1/Google_News_icon_2015.png/revision/latest?cb=20150901190817";
@@ -79,30 +90,64 @@ restService.post('/inputmsg', function(req, res) {
                 }
 
                 if (req.body.originalRequest.source == "google") {
-                    returnJson = {
-                        "speech": "Following are the top 5 news from Google.",
-                        "data": {
-                            "google": {
-                                "expectUserResponse": true,
-                                "richResponse": {
-                                    "items": [{
-                                        "simpleResponse": {
-                                            "textToSpeech": "Following are the top 5 news from Google."
+                    if( intentName == "Activities - Sales - custom - news - custom"){
+                        returnJson = {
+                                'expectUserResponse': true,
+                                'isSsml': false,
+                                'noInputPrompts': [],
+                                'richResponse': {
+                                    'items': [{
+                                            'simpleResponse': {
+                                                'textToSpeech': basicCard["title"],
+                                                'displayText': basicCard["title"]
+                                            }
+                                        },
+                                        {
+                                            'basicCard': {
+                                                'title': '',
+                                                "image": {
+                                                    "url": basicCard["image"],
+                                                    "accessibilityText": ""
+                                                },
+                                                'buttons': [{
+                                                    'title': "More details...",
+                                                    'openUrlAction': {
+                                                        'url': basicCard["url"]
+                                                    }
+                                                }]
+                                            }
                                         }
-                                    }]
-                                },
-                                "systemIntent": {
-                                    "intent": "actions.intent.OPTION",
-                                    "data": {
-                                        "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
-                                        "carouselSelect": {
-                                            "items": carousels
+                                    ]
+                                }
+                            }
+                    }else{
+                        returnJson = {
+                            "speech": "Following are the top 5 news from Google.",
+                            "data": {
+                                "google": {
+                                    "expectUserResponse": true,
+                                    "richResponse": {
+                                        "items": [{
+                                            "simpleResponse": {
+                                                "textToSpeech": "Following are the top 5 news from Google."
+                                            }
+                                        }]
+                                    },
+                                    "systemIntent": {
+                                        "intent": "actions.intent.OPTION",
+                                        "data": {
+                                            "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
+                                            "carouselSelect": {
+                                                "items": carousels
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
-                    };
+                        };
+                    }
+                    
+                    
                 } else {
                     returnJson = {
                         speech: speech,
