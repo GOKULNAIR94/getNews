@@ -46,7 +46,7 @@ restService.post('/inputmsg', function(req, res) {
         const googleNews = new GoogleNewsRss();
 
         googleNews
-            .search(track, 10, "en")
+            .search( tracker, 10, "en")
             .then(resp => {
 
                 console.log("resp : " + resp);
