@@ -65,6 +65,22 @@ restService.post('/inputmsg', function(req, res) {
                             basicCard["description"] = resp[i].description;
                             basicCard["url"] = resp[i].link;
                         }
+                    }else{
+                        carousels.push({
+                            "optionInfo": {
+                                "key": resp[i].title,
+                                "synonyms": [
+                                    "Google Home Assistant",
+                                    "Assistant on the Google Home"
+                                ]
+                            },
+                            "title": resp[i].title + ".. More details..",
+                            "description": resp[i].description,
+                            "image": {
+                                "url": resp[i].thumbnailUrl,
+                                "accessibilityText": "resp[i].title"
+                            }
+                        });
                     }
                     
                     if( resp[i].thumbnailUrl == null || resp[i].thumbnailUrl == "" ){
@@ -74,21 +90,7 @@ restService.post('/inputmsg', function(req, res) {
                         
                     }
 
-                    carousels.push({
-                        "optionInfo": {
-                            "key": resp[i].title,
-                            "synonyms": [
-                                "Google Home Assistant",
-                                "Assistant on the Google Home"
-                            ]
-                        },
-                        "title": resp[i].title + ".. More details..",
-                        "description": resp[i].description,
-                        "image": {
-                            "url": resp[i].thumbnailUrl,
-                            "accessibilityText": "resp[i].title"
-                        }
-                    });
+                    
                 }
 
                 if (req.body.originalRequest.source == "google") {
