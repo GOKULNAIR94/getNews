@@ -109,7 +109,10 @@ restService.post('/inputmsg', function(req, res) {
 
                 if (req.body.originalRequest.source == "google") {
                     if( intentName == "Activities - Sales - custom - news - custom"){
-                        returnJson = {
+                        returnJson ={
+                            
+                            data : {
+                                google: {
                                 'expectUserResponse': true,
                                 'isSsml': false,
                                 'noInputPrompts': [],
@@ -138,6 +141,14 @@ restService.post('/inputmsg', function(req, res) {
                                     ]
                                 }
                             }
+                            }
+                        } 
+                            
+                            
+                            
+                            
+                            
+                            
                     }else{
                         returnJson = {
                             "speech": "Following are the top 10 news from Google.",
