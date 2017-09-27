@@ -39,7 +39,9 @@ restService.post('/inputmsg', function(req, res) {
     try {
 
         var carousels = [];
-        var basicCard;
+        var basicCard = {
+            "key": "value"
+        };
 
         var gNews = "";
         const GoogleNewsRss = require('google-news-rss');
