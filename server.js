@@ -70,17 +70,14 @@ restService.post('/inputmsg', function(req, res) {
                         console.log("HeadLine : " + headLine );
                         console.log( "resp[i].title :" + resp[i].title );
                         console.log( "flag :" + resp[i].title.indexOf(headLine.substring(1, 10)) );
-                        if( resp[i].title.indexOf(headLine.substring(1, 10)) == 0  ){
-                            basicCard["title"] = resp[i].title;
-                            basicCard["image"] = resp[i].thumbnailUrl;
-                            basicCard["description"] = resp[i].description;
-                            basicCard["url"] = resp[i].link;
-                        }
-                        else{
-                            res.json({
-                                speech: "Something went wrong! Please try again later!",
-                                displayText: "Something went wrong! Please try again later!"
-                            });
+                        
+                        basicCard["title"] = resp[i].title;
+                        basicCard["image"] = resp[i].thumbnailUrl;
+                        basicCard["description"] = resp[i].description;
+                        basicCard["url"] = resp[i].link;
+                        if( resp[i].title.indexOf(headLine.substring(1, 15)) == 0  ){
+                            
+                            break;
                         }
                     }else{
                         carousels.push({
