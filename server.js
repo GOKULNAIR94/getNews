@@ -68,17 +68,20 @@ restService.post('/inputmsg', function(req, res) {
                     if( intentName == "Activities - Sales - custom - news - custom"){
                         var headLine = req.body.headline;
                         console.log("HeadLine : " + headLine );
-                        console.log( "resp[i].title :" + resp[i].title );
-                        console.log( "flag :" + resp[i].title.indexOf(headLine.substring(1, 10)) );
+                        
+                        
                         
                         basicCard["title"] = resp[i].title;
                         basicCard["image"] = resp[i].thumbnailUrl;
                         basicCard["description"] = resp[i].description;
                         basicCard["url"] = resp[i].link;
+                        
+                        console.log( "resp[i].title :" + resp[i].title );
                         if( resp[i].title.indexOf(headLine.substring(1, 15)) == 0  ){
                             
                             break;
                         }
+                        console.log( "flag :" + resp[i].title.indexOf(headLine.substring(1, 10)) );
                     }else{
                         carousels.push({
                             "optionInfo": {
