@@ -22,6 +22,7 @@
     "fast-csv": "^2.4.0",
     "goo.gl": "^0.1.4",
     "google-news": "^1.4.6",
+    "google-news-rss": "^0.2.0",
     "json-query": "^2.2.2",
     "request": "^2.76.0"
   },
