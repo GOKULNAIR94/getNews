@@ -56,6 +56,9 @@ restService.post('/inputmsg', function(req, res) {
                     
                     if( resp[i].thumbnailUrl == null || resp[i].thumbnailUrl == "" ){
                         resp[i].thumbnailUrl = "https://vignette4.wikia.nocookie.net/logopedia/images/d/d1/Google_News_icon_2015.png/revision/latest?cb=20150901190817";
+                    }else{
+                        resp[i].thumbnailUrl = "http:" + resp[i].thumbnailUrl;
+                        
                     }
 
                     carousels.push({
