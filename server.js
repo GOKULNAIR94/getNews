@@ -79,7 +79,7 @@ restService.post('/inputmsg', function(req, res) {
                             basicCard["title"] = resp[i].title;
                             basicCard["image"] = resp[i].thumbnailUrl;
                             basicCard["description"] = resp[i].description;
-                            basicCard["url"] = resp[i].shortUrl;
+                            basicCard["url"] = resp[i].shortLink;
                             console.log( "basicCard :" + JSON.stringify(basicCard) );
                             
                         }
@@ -140,14 +140,14 @@ restService.post('/inputmsg', function(req, res) {
                             }
                     }else{
                         returnJson = {
-                            "speech": "Following are the top 5 news from Google.",
+                            "speech": "Following are the top 10 news from Google.",
                             "data": {
                                 "google": {
                                     "expectUserResponse": true,
                                     "richResponse": {
                                         "items": [{
                                             "simpleResponse": {
-                                                "textToSpeech": "Following are the top 5 news from Google."
+                                                "textToSpeech": "Following are the latest news from Google."
                                             }
                                         }]
                                     },
