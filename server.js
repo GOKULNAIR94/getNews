@@ -128,7 +128,7 @@ restService.post('/inputmsg', function(req, res) {
                                                 'title': '',
                                                 'formattedText' : basicCard["description"],
                                                 "image": {
-                                                    "url": basicCard["image"],
+                                                    "url": "",
                                                     "accessibilityText": ""
                                                 },
                                                 'buttons': [{
