@@ -97,7 +97,7 @@ restService.post('/inputmsg', function(req, res) {
                             "description": resp[i].description,
                             "image": {
                                 "url": resp[i].thumbnailUrl,
-                                "accessibilityText": "resp[i].title"
+                                "accessibilityText": resp[i].title
                             }
                         });
                     }
