@@ -164,7 +164,7 @@ restService.post('/inputmsg', function(req, res) {
                                         }]
                                     },
                                     "systemIntent": {
-                                        "intent": "actions.intent.OPTION",
+                                        "intent": "Activities - Sales - custom - news - custom",//"actions.intent.OPTION",
                                         "data": {
                                             "@type": "type.googleapis.com/google.actions.v2.OptionValueSpec",
                                             "carouselSelect": {
