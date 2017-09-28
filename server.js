@@ -70,10 +70,10 @@ restService.post('/inputmsg', function(req, res) {
                     if( intentName == "Activities - Sales - custom - news - custom" || intentName == "oppty - News - custom" ){
                         
                         var headLine = "";
-                        if( req.body.option != null && .body.option != "" ){
+                        if( req.body.option != null && req.body.option != "" ){
                             headLine = req.body.option;
                         }else{
-                            if( req.body.headline != null && .body.headline != "" ){
+                            if( req.body.headline != null && req.body.headline != "" ){
                                 headLine = req.body.headline;
                             } 
                         }
