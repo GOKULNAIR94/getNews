@@ -36,65 +36,66 @@ restService.post('/inputmsg', function(req, res) {
     var speech = "";
     var speechVoice = "";
     var returnJson;
-    try {
 
-        var carousels = [];
-        var basicCard = {
-            "key": "value"
-        };
 
-        var gNews = "";
-        const GoogleNewsRss = require('google-news-rss');
+    var carousels = [];
+    var basicCard = {
+        "key": "value"
+    };
+    var basicFlag = 0;
 
-        const googleNews = new GoogleNewsRss();
+    var gNews = "";
+    const GoogleNewsRss = require('google-news-rss');
 
-        googleNews
-            .search( tracker, 10, "en")
-            .then(resp => {
+    const googleNews = new GoogleNewsRss();
 
+    googleNews
+        .search(tracker, 10, "en")
+        .then(resp => {
+            try {
                 console.log("resp : " + JSON.stringify(resp));
-            
-            
-                
+
+
+
 
                 for (var i = 0; i < resp.length; i++) {
-                    
-                    if( resp[i].thumbnailUrl == null || resp[i].thumbnailUrl == "" ){
+
+                    if (resp[i].thumbnailUrl == null || resp[i].thumbnailUrl == "") {
                         resp[i].thumbnailUrl = "https://vignette4.wikia.nocookie.net/logopedia/images/d/d1/Google_News_icon_2015.png/revision/latest?cb=20150901190817";
-                    }else{
+                    } else {
                         resp[i].thumbnailUrl = "http:" + resp[i].thumbnailUrl;
-                        
+
                     }
-                    
-                    
-                    if( intentName == "Activities - Sales - custom - news - custom" || intentName == "oppty - News - custom" ){
-                        
+
+
+                    if (intentName == "Activities - Sales - custom - news - custom" || intentName == "oppty - News - custom") {
+
                         var headLine = "";
-                        if( req.body.option != null && req.body.option != "" ){
+                        if (req.body.option != null && req.body.option != "") {
                             headLine = req.body.option;
-                        }else{
-                            if( req.body.headline != null && req.body.headline != "" ){
+                        } else {
+                            if (req.body.headline != null && req.body.headline != "") {
                                 headLine = req.body.headline;
-                            } 
+                            }
                         }
-                        
-                        console.log("Body : " + JSON.stringify(req.body) );
-                        console.log("HeadLine : " + headLine );
-                        
-                        
-                        
-                        console.log( "flag :" + resp[i]["title"].indexOf(headLine.substring(1, 10)) == 0 );
-                        console.log( "resp[i].title :" + resp[i].title );
-                        if( resp[i].title == headLine ){
+
+                        console.log("Body : " + JSON.stringify(req.body));
+                        console.log("HeadLine : " + headLine);
+
+
+
+                        console.log("flag :" + resp[i]["title"].indexOf(headLine.substring(1, 10)) == 0);
+                        console.log("resp[i].title :" + resp[i].title);
+                        if (resp[i].title == headLine) {
                             basicCard["title"] = resp[i].title;
                             basicCard["image"] = resp[i].thumbnailUrl;
                             basicCard["description"] = resp[i].description;
                             basicCard["url"] = resp[i].shortLink;
-                            console.log( "basicCard :" + JSON.stringify(basicCard) );
-                            
+                            console.log("basicCard :" + JSON.stringify(basicCard));
+                            basicFlag = 1;
                         }
-                        
-                    }else{
+
+                    } else {
                         carousels.push({
                             "optionInfo": {
                                 "key": resp[i].title,
@@ -111,56 +112,62 @@ restService.post('/inputmsg', function(req, res) {
                             }
                         });
                     }
-                    
-                    
 
-                    
+
+
+
                 }
 
                 if (req.body.originalRequest.source == "google") {
-                    if( intentName == "Activities - Sales - custom - news - custom" || intentName == "oppty - News - custom" ){
-                        returnJson ={
-                            
-                            data : {
-                                google: {
-                                'expectUserResponse': true,
-                                'isSsml': false,
-                                'noInputPrompts': [],
-                                'richResponse': {
-                                    'items': [{
-                                            'simpleResponse': {
-                                                'textToSpeech': basicCard["title"],
-                                                'displayText': basicCard["title"]
-                                            }
-                                        },
-                                        {
-                                            'basicCard': {
-                                                'title': '',
-                                                'formattedText' : basicCard["description"],
-                                                "image": {
-                                                    "url": "",
-                                                    "accessibilityText": ""
-                                                },
-                                                'buttons': [{
-                                                    'title': "More details...",
-                                                    'openUrlAction': {
-                                                        'url': basicCard["url"]
+                    if (intentName == "Activities - Sales - custom - news - custom" || intentName == "oppty - News - custom") {
+                        if (basicFlag == 1) {
+                            returnJson = {
+
+                                data: {
+                                    google: {
+                                        'expectUserResponse': true,
+                                        'isSsml': false,
+                                        'noInputPrompts': [],
+                                        'richResponse': {
+                                            'items': [{
+                                                    'simpleResponse': {
+                                                        'textToSpeech': basicCard["title"],
+                                                        'displayText': basicCard["title"]
                                                     }
-                                                }]
-                                            }
+                                                },
+                                                {
+                                                    'basicCard': {
+                                                        'title': '',
+                                                        'formattedText': basicCard["description"],
+                                                        "image": {
+                                                            "url": "",
+                                                            "accessibilityText": ""
+                                                        },
+                                                        'buttons': [{
+                                                            'title': "More details...",
+                                                            'openUrlAction': {
+                                                                'url': basicCard["url"]
+                                                            }
+                                                        }]
+                                                    }
+                                                }
+                                            ]
                                         }
-                                    ]
+                                    }
                                 }
                             }
-                            }
-                        } 
-                            
-                            
-                            
-                            
-                            
-                            
-                    }else{
+                        } else {
+                            speech = "Unable to find news at the moment! Please try again later!";
+                            returnJson = {
+                                speech: speech,
+                                displayText: speech
+                            };
+                        }
+
+
+
+
+                    } else {
                         returnJson = {
                             "speech": "Following are the top 10 news from Google.",
                             "data": {
@@ -186,8 +193,8 @@ restService.post('/inputmsg', function(req, res) {
                             }
                         };
                     }
-                    
-                    
+
+
                 } else {
                     returnJson = {
                         speech: speech,
@@ -196,12 +203,18 @@ restService.post('/inputmsg', function(req, res) {
                 }
                 console.log(" returnJson : " + JSON.stringify(returnJson));
                 res.json(returnJson);
+            } catch (e) {
+                console.log("Error : " + e);
+                speech = "Unable to find news at the moment! Please try again later!";
+                returnJson = {
+                    speech: speech,
+                    displayText: speech
+                };
 
-            });
+            }
+        });
 
-    } catch (e) {
-        console.log("Error : " + e);
-    }
+
 });
 
 
