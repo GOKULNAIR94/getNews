@@ -69,6 +69,7 @@ restService.post('/inputmsg', function(req, res) {
                     
                     if( intentName == "Activities - Sales - custom - news - custom" || intentName == "oppty - News - custom" ){
                         var headLine = req.body.headline;
+                        console.log("Body : " + JSON.stringify(req.body) );
                         console.log("HeadLine : " + headLine );
                         
                         
