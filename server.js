@@ -93,6 +93,10 @@ restService.post('/inputmsg', function(req, res) {
                             basicCard["url"] = resp[i].shortLink;
                             console.log("basicCard :" + JSON.stringify(basicCard));
                             basicFlag = 1;
+                            break;
+                        }
+                        else{
+                            speech="Unable to find news at the moment. Please try again later.";
                         }
 
                     } else {
