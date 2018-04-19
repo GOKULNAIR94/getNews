@@ -68,7 +68,7 @@ restService.post('/inputmsg', function(req, res) {
                     }
 
 
-                    if (intentName == "Activities - Sales - custom - news - custom" || intentName == "oppty - News - custom") {
+                    if (intentName == "Activities - Sales - custom - news - custom" || intentName == "oppty - News - custom" || intentName == "opty_top - custom - custom-news - details") {
 
                         var headLine = "";
                         if (req.body.option != null && req.body.option != "") {
