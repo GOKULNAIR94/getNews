@@ -124,7 +124,7 @@ restService.post('/inputmsg', function(req, res) {
                 }
 
                 if (req.body.originalRequest.source == "google") {
-                    if (intentName == "Activities - Sales - custom - news - custom" || intentName == "oppty - News - custom") {
+                    if (intentName == "Activities - Sales - custom - news - custom" || intentName == "oppty - News - custom" || intentName == "opty_top - custom - custom-news - details") {
                         if (basicFlag == 1) {
                             returnJson = {
 
