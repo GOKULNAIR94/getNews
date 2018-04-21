@@ -80,14 +80,14 @@ restService.post('/inputmsg', function(req, res) {
                         }
 
                         console.log("Body : " + JSON.stringify(req.body));
-                        console.log("HeadLine : " + headLine.substring(1, 10));
+                        console.log("HeadLine : " + headLine);
 
 
 
-                        console.log("Flag :");
-                        console.log( resp[i]["title"].indexOf(headLine.substring(1, 10)) == 0);
+                        console.log("Flag 2:" + resp[i]["title"].indexOf(headLine.substring(0, 10)) == 0);
+                        console.log("Flag 1:" + (resp[i].title == headLine));
                         console.log("resp[i].title :" + resp[i].title);
-                        if ( resp[i]["title"].indexOf(headLine.substring(1, 10)) == 0 ) {
+                        if (resp[i].title == headLine) {
                             basicCard["title"] = resp[i].title;
                             basicCard["image"] = resp[i].thumbnailUrl;
                             basicCard["description"] = resp[i].description;
