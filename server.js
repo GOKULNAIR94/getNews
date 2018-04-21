@@ -80,11 +80,12 @@ restService.post('/inputmsg', function(req, res) {
                         }
 
                         console.log("Body : " + JSON.stringify(req.body));
-                        console.log("HeadLine : " + headLine);
+                        console.log("HeadLine : " + headLine.substring(1, 10));
 
 
 
-                        console.log("Flag :" + resp[i]["title"].indexOf(headLine.substring(1, 10)) == 0);
+                        console.log("Flag :");
+                        console.log( resp[i]["title"].indexOf(headLine.substring(1, 10)) == 0);
                         console.log("resp[i].title :" + resp[i].title);
                         if ( resp[i]["title"].indexOf(headLine.substring(1, 10)) == 0 ) {
                             basicCard["title"] = resp[i].title;
