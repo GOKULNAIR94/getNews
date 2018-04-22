@@ -174,14 +174,14 @@ restService.post('/inputmsg', function(req, res) {
 
                     } else {
                         returnJson = {
-                            "speech": "Following are the top 10 news from Google.",
+                            "speech": "Following are the top 10 news.",
                             "data": {
                                 "google": {
                                     "expectUserResponse": true,
                                     "richResponse": {
                                         "items": [{
                                             "simpleResponse": {
-                                                "textToSpeech": "Following are the latest news from Google."
+                                                "textToSpeech": "Following are the latest news."
                                             }
                                         }]
                                     },
